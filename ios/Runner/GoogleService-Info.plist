@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>503683111114-1toqka32bini48b8es8ilou9fs3hci3t.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.503683111114-1toqka32bini48b8es8ilou9fs3hci3t</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA1yJzrZ7K-ke4lrH4QJtzV7U1VOsqeCCo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>503683111114</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.abuzaio.heavenCancellerHospital</string>
+	<key>PROJECT_ID</key>
+	<string>hospital-smkdev-b5458</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hospital-smkdev-b5458.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:503683111114:ios:4dba9a09b0967334ae7c33</string>
+	<key>DATABASE_URL</key>
+	<string>https://hospital-smkdev-b5458.firebaseio.com</string>
+</dict>
+</plist>

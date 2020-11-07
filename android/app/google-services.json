@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "503683111114",
+    "firebase_url": "https://hospital-smkdev-b5458.firebaseio.com",
+    "project_id": "hospital-smkdev-b5458",
+    "storage_bucket": "hospital-smkdev-b5458.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503683111114:android:769d94791616c753ae7c33",
+        "android_client_info": {
+          "package_name": "com.abuzaio.heaven_canceller_hospital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503683111114-kg56fu24h4kcjbmrjae6b5dm6sj4e6pl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHHTbwDT4_Q3rsmwR4A9UE8GY0fgnz4Yg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503683111114-kg56fu24h4kcjbmrjae6b5dm6sj4e6pl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "503683111114-v2l5d44q1svevr95ghg7llneecis8gg3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.abuaziz.smkdevHospital"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
