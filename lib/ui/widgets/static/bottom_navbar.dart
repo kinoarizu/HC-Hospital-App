@@ -37,6 +37,8 @@ class BottomNavbar extends StatelessWidget {
           type: BottomNavigationBarType.fixed, 
           onTap: (index) {
             navigation.changeIndex(index);
+            Provider.of<EventPromoProvider>(context, listen: false).resetKeyword();
+            Provider.of<ServiceFacilityProvider>(context, listen: false).resetKeyword();
           },
           selectedLabelStyle: mediumBaseFont.copyWith(
             color: accentColor,

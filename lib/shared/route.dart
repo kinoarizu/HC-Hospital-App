@@ -11,4 +11,5 @@ Map<String, WidgetBuilder> appRoute = {
   AboutUsScreen.routeName: (BuildContext context) => AboutUsScreen(),
   DetailDoctorScreen.routeName: (BuildContext context) => DetailDoctorScreen(),
   LatestNewsScreen.routeName: (BuildContext context) => LatestNewsScreen(),
+  DetailServiceScreen.routeName: (BuildContext context) => DetailServiceScreen(),
 };

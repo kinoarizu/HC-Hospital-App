@@ -6,6 +6,7 @@ class Wrapper extends StatelessWidget {
     Provider.of<EventPromoProvider>(context).loadResource();
     Provider.of<DoctorProvider>(context).loadResource();
     Provider.of<NewsProvider>(context).loadResource();
+    Provider.of<ServiceFacilityProvider>(context).loadResource();
 
     return Scaffold(
       body: MainScreen(),

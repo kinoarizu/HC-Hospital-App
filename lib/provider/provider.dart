@@ -7,3 +7,4 @@ part 'carousel_provider.dart';
 part 'event_promo_provider.dart';
 part 'doctor_provider.dart';
 part 'news_provider.dart';
+part 'service_facility_provider.dart';

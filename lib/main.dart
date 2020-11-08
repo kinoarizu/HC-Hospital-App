@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => EventPromoProvider()),
         ChangeNotifierProvider(create: (_) => DoctorProvider()),
         ChangeNotifierProvider(create: (_) => NewsProvider()),
+        ChangeNotifierProvider(create: (_) => ServiceFacilityProvider()),
       ],
       child: MaterialApp(
         title: "Heaven Canceller Hospital",

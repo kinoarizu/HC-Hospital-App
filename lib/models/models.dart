@@ -7,3 +7,4 @@ part 'doctor.dart';
 part 'news.dart';
 part 'contact_complaint.dart';
 part 'hospital_contact.dart';
+part 'service_facility.dart';

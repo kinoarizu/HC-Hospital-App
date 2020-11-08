@@ -17,6 +17,7 @@ part 'home/main_screen.dart';
 part 'service/service_screen.dart';
 part 'service/event_promo_screen.dart';
 part 'service/latest_news_screen.dart';
+part 'service/detail_service_screen.dart';
 part 'booking/booking_screen.dart';
 part 'booking/detail_doctor_screen.dart';
 part 'profile/profile_screen.dart';

@@ -8,3 +8,4 @@ part 'doctor_service.dart';
 part 'news_service.dart';
 part 'contact_complaint_service.dart';
 part 'hospital_contact_service.dart';
+part 'service_facility_service.dart';

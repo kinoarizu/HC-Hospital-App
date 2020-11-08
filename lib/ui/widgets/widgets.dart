@@ -22,4 +22,5 @@ part 'home/map_view_card.dart';
 part 'booking/doctor_schedule_info.dart';
 part 'service/search_box_field.dart';
 part 'service/hospital_facility_card.dart';
+part 'service/event_promo_card.dart';
 part 'more/about_us_card.dart';

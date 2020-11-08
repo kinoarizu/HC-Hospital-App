@@ -2,9 +2,11 @@ part of 'package:heaven_canceller_hospital/ui/widgets/widgets.dart';
 
 class SearchBoxField extends StatelessWidget {
   final TextEditingController controller;
+  final Function(String) onChanged;
 
   SearchBoxField({
     this.controller,
+    this.onChanged,
   });
 
   @override
@@ -17,7 +19,7 @@ class SearchBoxField extends StatelessWidget {
         decoration: TextDecoration.none,
       ),
       decoration: InputDecoration(
-        hintText: "Cari dokter, fasilitas & layanan",
+        hintText: "Cari event, promo, fasilitas, layanan",
         hintStyle: regularBaseFont.copyWith(
           fontSize: 13,
           color: lightGreyColor,
@@ -37,7 +39,7 @@ class SearchBoxField extends StatelessWidget {
           color: lightGreyColor,
         ),
       ),
-      onChanged: (text) {},
+      onChanged: onChanged,
     );
   }
 }
