@@ -12,9 +12,15 @@ class DoctorService {
       doctors.add(
         Doctor(
           name: document.data()['name'],
+          gender: document.data()['gender'],
           speciality: document.data()['speciality'],
           photo: document.data()['photo'],
-          time: document.data()['time'],
+          star: document.data()['star'],
+          status: document.data()['status'],
+          biography: document.data()['biography'],
+          education: (document.data()['education'] as List).map((e) => e.toString()).toList(),
+          credential: (document.data()['credential'] as List).map((e) => e.toString()).toList(),
+          doctorSchedule: (document.data()['schedule'] as List).map((data) => DoctorSchedule.fromJson(data)).toList(),
         ),
       );
     }

@@ -57,19 +57,32 @@ class AboutUsScreen extends StatelessWidget {
                     SizedBox(
                       height: 24,
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(6),
-                        child: Image.asset(
-                          "assets/image/about_us.png",
-                          width: defaultWidth(context),
-                          height: 200,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                    StreamBuilder(
+                      stream: AboutUsService.getSingle(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 20,
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6),
+                              child: Image.asset(
+                                snapshot.data['image_path'],
+                                width: defaultWidth(context),
+                                height: 200,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          );
+                        }
+
+                        /// WIDGET: LOADING DESCRIPTION
+                        return CircularLoadingState(
+                          height: 240,
+                          state: "Memuat Gambar",
+                        );
+                      }
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(

@@ -39,6 +39,7 @@ class BottomNavbar extends StatelessWidget {
             navigation.changeIndex(index);
             Provider.of<EventPromoProvider>(context, listen: false).resetKeyword();
             Provider.of<ServiceFacilityProvider>(context, listen: false).resetKeyword();
+            Provider.of<DoctorProvider>(context, listen: false).resetKeyword();
           },
           selectedLabelStyle: mediumBaseFont.copyWith(
             color: accentColor,

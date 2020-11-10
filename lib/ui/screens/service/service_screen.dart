@@ -1,13 +1,6 @@
 part of 'package:heaven_canceller_hospital/ui/screens/screens.dart';
 
-class ServiceScreen extends StatefulWidget {
-  @override
-  _ServiceScreenState createState() => _ServiceScreenState();
-}
-
-class _ServiceScreenState extends State<ServiceScreen> {
-  TextEditingController searchController = TextEditingController();
-
+class ServiceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,18 +19,32 @@ class _ServiceScreenState extends State<ServiceScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Layanan",
-                      style: semiBoldBaseFont.copyWith(
-                        color: darkGreyColor,
-                        fontSize: 24,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          "assets/image/ic_layanan_black.png",
+                          width: 28,
+                          height: 28,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text(
+                          "Layanan",
+                          style: semiBoldBaseFont.copyWith(
+                            color: darkGreyColor,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 24,
                     ),
                     SearchBoxField(
-                      controller: searchController,
+                      hintText: "Cari event, promo, fasilitas, layanan",
                       onChanged: (value) {
                         serviceFacilities.searchResource(value);
                         eventPromos.searchResource(value);
@@ -111,29 +118,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                             },
                           ),
                         ),
-                      ) : Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/image/empty_state.png",
-                              width: 120,
-                              height: 120,
-                              fit: BoxFit.cover,
-                            ),
-                            SizedBox(
-                              height: 4,
-                            ),
-                            Text(
-                              "Tidak Ada Hasil",
-                              style: mediumBaseFont.copyWith(
-                                color: darkGreyColor,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      ) : EmptyViewState(),
                     ),
                   ],
                 );

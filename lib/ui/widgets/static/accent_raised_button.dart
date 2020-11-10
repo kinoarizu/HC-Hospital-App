@@ -7,6 +7,7 @@ class AccentRaisedButton extends StatelessWidget {
   final double borderRadius;
   final String text;
   final double fontSize;
+  final IconData icon;
   final Function onPressed;
 
   AccentRaisedButton({
@@ -16,6 +17,7 @@ class AccentRaisedButton extends StatelessWidget {
     this.borderRadius,
     this.text,
     this.fontSize,
+    this.icon,
     this.onPressed,
   });
 
@@ -32,12 +34,16 @@ class AccentRaisedButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
         ),
-        child: Text(
+        child: (text != null) ? Text(
           text,
           style: mediumBaseFont.copyWith(
             fontSize: fontSize,
             color: baseColor,
           ),
+        ) : Icon(
+          icon,
+          color: baseColor,
+          size: 20,
         ),
         onPressed: onPressed,
       ),

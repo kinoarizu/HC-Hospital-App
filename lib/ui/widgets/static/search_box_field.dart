@@ -2,10 +2,12 @@ part of 'package:heaven_canceller_hospital/ui/widgets/widgets.dart';
 
 class SearchBoxField extends StatelessWidget {
   final TextEditingController controller;
+  final String hintText;
   final Function(String) onChanged;
 
   SearchBoxField({
     this.controller,
+    this.hintText,
     this.onChanged,
   });
 
@@ -19,7 +21,7 @@ class SearchBoxField extends StatelessWidget {
         decoration: TextDecoration.none,
       ),
       decoration: InputDecoration(
-        hintText: "Cari event, promo, fasilitas, layanan",
+        hintText: hintText,
         hintStyle: regularBaseFont.copyWith(
           fontSize: 13,
           color: lightGreyColor,

@@ -25,7 +25,7 @@ class DetailDoctorScreen extends StatelessWidget {
                       Stack(
                         children: [
                           CachedNetworkImage(
-                            imageUrl: "https://st.depositphotos.com/1258191/3252/i/450/depositphotos_32524605-stock-photo-portrait-of-a-handsome-doctor.jpg",
+                            imageUrl: doctor.photo,
                             width: deviceWidth(context),
                             height: 275,
                             fit: BoxFit.cover,
@@ -84,7 +84,7 @@ class DetailDoctorScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Dr. William, SOD",
+                                      doctor.name,
                                       style: semiBoldBaseFont.copyWith(
                                         fontSize: 18,
                                         color: darkGreyColor,
@@ -106,7 +106,7 @@ class DetailDoctorScreen extends StatelessWidget {
                                           width: 8,
                                         ),
                                         Text(
-                                          "Spesialis Otak",
+                                          doctor.speciality,
                                           style: regularBaseFont.copyWith(
                                             fontSize: 14,
                                             color: lightGreyColor,
@@ -127,7 +127,7 @@ class DetailDoctorScreen extends StatelessWidget {
                                       width: 4,
                                     ),
                                     Text(
-                                      "4.8",
+                                      doctor.star.toString(),
                                       style: mediumBaseFont.copyWith(
                                         fontSize: 16,
                                         color: darkGreyColor,
@@ -148,32 +148,20 @@ class DetailDoctorScreen extends StatelessWidget {
                               ),
                             ),
                             Column(
-                              children: [
-                                SizedBox(
-                                  height: 12,
-                                ),
-                                DoctorScheduleInfo(
-                                  day: "Senin",
-                                  time: "08.00 - 17.00",
-                                  place: "HC Hospital",
-                                ),
-                                SizedBox(
-                                  height: 12,
-                                ),
-                                DoctorScheduleInfo(
-                                  day: "Senin",
-                                  time: "08.00 - 17.00",
-                                  place: "HC Hospital",
-                                ),
-                                SizedBox(
-                                  height: 12,
-                                ),
-                                DoctorScheduleInfo(
-                                  day: "Senin",
-                                  time: "08.00 - 17.00",
-                                  place: "HC Hospital",
-                                ),
-                              ],
+                              children: doctor.doctorSchedule.map((schedule) {
+                                return Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 12,
+                                    ),
+                                    DoctorScheduleInfo(
+                                      day: schedule.dayName,
+                                      place: schedule.place,
+                                      time: schedule.time,
+                                    ),
+                                  ],
+                                );
+                              }).toList(),
                             ),
                             SizedBox(
                               height: 24,
@@ -189,7 +177,7 @@ class DetailDoctorScreen extends StatelessWidget {
                               height: 12,
                             ),
                             Text(
-                              "Dr. William mendirikan Indonesische Studie Club (ISC) yang merupakan wabah bagi kaum terpelajar Indonesia. ISC berhasil mendirikan sekolah tenun, bank kredit, koperasi dan sebagainya. Pada tahun 1931 ISC berganti nama menjadi Persatuan Bangsa Indonesia (PBI). Di bawah pimpinan Soetomo PBI cepat berkembang.",
+                              doctor.biography,
                               textAlign: TextAlign.start,
                               style: regularBaseFont.copyWith(
                                 fontSize: 12,
@@ -210,48 +198,36 @@ class DetailDoctorScreen extends StatelessWidget {
                             SizedBox(
                               height: 12,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.circle,
-                                  size: 6,
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  "S1 Fakultas Kedokteran Universitas Yasri",
-                                  style: regularBaseFont.copyWith(
-                                    fontSize: 12,
-                                    height: 1.7,
-                                    color: greyColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 4,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.circle,
-                                  size: 6,
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  "S2 Fakultas Kedokteran Universitas Hasanudin",
-                                  style: regularBaseFont.copyWith(
-                                    fontSize: 12,
-                                    height: 1.7,
-                                    color: greyColor,
-                                  ),
-                                ),
-                              ],
+                            Column(
+                              children: doctor.education.map((education) {
+                                return Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.circle,
+                                          size: 6,
+                                        ),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Text(
+                                          education,
+                                          style: regularBaseFont.copyWith(
+                                            fontSize: 12,
+                                            height: 1.7,
+                                            color: greyColor,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                  ],
+                                );
+                              }).toList(),
                             ),
                             SizedBox(
                               height: 24,
@@ -266,48 +242,36 @@ class DetailDoctorScreen extends StatelessWidget {
                             SizedBox(
                               height: 12,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.circle,
-                                  size: 6,
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  "Sertifikat Praktik Ikatan Dokter Indonesia",
-                                  style: regularBaseFont.copyWith(
-                                    fontSize: 12,
-                                    height: 1.7,
-                                    color: greyColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 4,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.circle,
-                                  size: 6,
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  "International Health Certification Birmigham",
-                                  style: regularBaseFont.copyWith(
-                                    fontSize: 12,
-                                    height: 1.7,
-                                    color: greyColor,
-                                  ),
-                                ),
-                              ],
+                            Column(
+                              children: doctor.credential.map((credential) {
+                                return Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.circle,
+                                          size: 6,
+                                        ),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Text(
+                                          credential,
+                                          style: regularBaseFont.copyWith(
+                                            fontSize: 12,
+                                            height: 1.7,
+                                            color: greyColor,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                  ],
+                                );
+                              }).toList(),
                             ),
                             SizedBox(
                               height: 78,
