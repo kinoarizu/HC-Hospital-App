@@ -102,12 +102,12 @@ void filterModalBottomSheet(BuildContext context) {
                     fontSize: 12,
                     text: "Terapkan",
                     onPressed: () {},
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
       );
     },
   );

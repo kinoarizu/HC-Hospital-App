@@ -17,3 +17,4 @@ const Color selectedColor = Color(0xFFF2F2F2);
 const Color onGoingColor = Color(0xFFF2994A);
 const Color finishColor = Color(0xFF6FCF97);
 const Color yellowColor = Color(0xFFFBD460);
+const Color maroonColor = Color(0xFFD4362E);

@@ -309,7 +309,9 @@ class DetailDoctorScreen extends StatelessWidget {
                       borderRadius: 8,
                       text: "Buat Janji",
                       fontSize: 14,
-                      onPressed: () {},
+                      onPressed: () async {
+                        onSubmitPressed(context);
+                      },
                     ),
                   ),
                 ),
@@ -319,5 +321,15 @@ class DetailDoctorScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> onSubmitPressed(BuildContext context) async {
+    bool checkUser = await SharedPreferenceUtil.checkPreference('user');
+
+    if (checkUser) {
+      Navigator.pushNamed(context, BookingConfirmationScreen.routeName);
+    } else {
+      Navigator.pushNamed(context, RegisterScreen.routeName);
+    }
   }
 }

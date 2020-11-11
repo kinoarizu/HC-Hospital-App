@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,8 @@ part 'static/circular_loading_state.dart';
 part 'static/search_box_field.dart';
 part 'static/selectable_box_button.dart';
 part 'static/empty_view_state.dart';
+part 'static/custom_text_field.dart';
+part 'static/custom_radio_button.dart';
 part 'home/carousel_indicator.dart';
 part 'home/hospital_info_card.dart';
 part 'home/doctor_profile_card.dart';

@@ -10,3 +10,4 @@ part 'contact_complaint.dart';
 part 'hospital_contact.dart';
 part 'service_facility.dart';
 part 'doctor_schedule.dart';
+part 'user.dart';
