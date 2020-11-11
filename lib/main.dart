@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:heaven_canceller_hospital/provider/provider.dart';
 import 'package:heaven_canceller_hospital/shared/shared.dart';
-import 'package:heaven_canceller_hospital/ui/screens/screens.dart';
+import 'package:heaven_canceller_hospital/ui/ui.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,11 +12,6 @@ void main() async {
 }
 
 ///* MyApp Class - Root Of Project
-
-/// Class ini merupakan kelas paling tinggi dalam struktur hirarki di aplikasi ini.
-/// Di class ini saya memanggil class [MultiProvider] untuk memanggil provider yang
-/// sudah dibuat agar bisa dipanggil secara global. Dan memanggil [MaterialApp]
-/// untuk menkonfigurasi app manifest menggunakan material design flutter.
 
 class MyApp extends StatelessWidget {
   @override

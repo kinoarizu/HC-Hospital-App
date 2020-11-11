@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:heaven_canceller_hospital/ui/screens/screens.dart';
+import 'package:heaven_canceller_hospital/ui/ui.dart';
 
 part 'color.dart';
 part 'font.dart';
