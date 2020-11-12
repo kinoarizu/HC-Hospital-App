@@ -15,6 +15,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:heaven_canceller_hospital/extensions/extensions.dart';
 
 part 'wrapper.dart';
 part 'home/home_screen.dart';
@@ -27,6 +28,7 @@ part 'booking/booking_screen.dart';
 part 'booking/detail_doctor_screen.dart';
 part 'booking/register_screen.dart';
 part 'booking/booking_confirmation_screen.dart';
+part 'booking/change_patient_screen.dart';
 part 'profile/profile_screen.dart';
 part 'menu/partner_career_screen.dart';
 part 'menu/about_us_screen.dart';

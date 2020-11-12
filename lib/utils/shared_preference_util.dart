@@ -4,14 +4,13 @@ class SharedPreferenceUtil {
   static Future<void> setPreference(String key, value) async {
     final prefs = await SharedPreferences.getInstance();
 
-    prefs.setString('user', json.encode(value));
+    prefs.setString(key, jsonEncode(value));
   }
 
-  static Future<Patient> getPreference(String key) async {
+  static Future<String> getPreference(String key) async {
     final prefs = await SharedPreferences.getInstance();
-    Map json = jsonDecode(prefs.getString(key));
 
-    return Patient.fromJson(json);
+    return prefs.getString(key);
   }
 
   static Future<bool> checkPreference(String key) async {

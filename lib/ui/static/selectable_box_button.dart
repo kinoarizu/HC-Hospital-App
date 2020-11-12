@@ -26,7 +26,7 @@ class SelectableBoxButton extends StatelessWidget {
     return GestureDetector(
       child: Container(
         margin: EdgeInsets.only(
-          right: isMarginRight ? 10 : 0,
+          right: isMarginRight ? 12 : 0,
           bottom: 10,
         ),
         padding: EdgeInsets.symmetric(
@@ -37,7 +37,7 @@ class SelectableBoxButton extends StatelessWidget {
           color: isSelected ? accentColor : Colors.transparent,
           borderRadius: BorderRadius.circular(borderRadius),
           border: Border.all(
-            color: borderColor,
+            color: isSelected ? accentColor : borderColor,
             width: thickBorder,
           ),
         ),

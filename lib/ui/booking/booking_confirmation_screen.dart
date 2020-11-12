@@ -8,10 +8,38 @@ class BookingConfirmationScreen extends StatefulWidget {
 }
 
 class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
+  String name;
+  String gender;
+  String status;
+  
+  String selectedTime;
+  List<DateTime> dates;
+  DateTime selectedDate;
+
   TextEditingController messageController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+
+    _loadPatientPreference();
+
+    dates = List.generate(7, (index) => DateTime.now().add(Duration(days: index)));
+    selectedDate = dates[0];
+  }
+
+  void _loadPatientPreference() async {
+    name = await SharedPreferenceUtil.getPreference('name');
+    gender = await SharedPreferenceUtil.getPreference('gender');
+    status = await SharedPreferenceUtil.getPreference('status');
+    
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final Doctor doctor = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -72,12 +100,26 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              color: greyColor,
-                              shape: BoxShape.circle,
+                          CachedNetworkImage(
+                            imageUrl: doctor.photo,
+                            placeholder: (_, url) => SpinKitRing(
+                              color: accentColor,
+                              size: 40,
+                            ),
+                            imageBuilder: (_, provider) => Container(
+                              width: 60,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  width: 3,
+                                  color: accentColor,
+                                ),
+                                image: DecorationImage(
+                                  image: provider,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -87,7 +129,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Dr. Irwansyah, SPD",
+                                doctor.name,
                                 style: semiBoldBaseFont.copyWith(
                                   color: darkGreyColor,
                                   fontSize: 14,
@@ -97,7 +139,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                 height: 4,
                               ),
                               Text(
-                                "Spesialis Otak",
+                                doctor.speciality,
                                 style: regularBaseFont.copyWith(
                                   color: greyColor,
                                   fontSize: 12,
@@ -165,7 +207,9 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                         color: accentColor,
                                       ),
                                     ),
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.pushNamed(context, ChangePatientScreen.routeName);
+                                    },
                                   ),
                                 ],
                               ),
@@ -173,7 +217,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                 height: 8,
                               ),
                               Text(
-                                "Nama: Irfan Trianto",
+                                ("Nama: $name").replaceAll(RegExp(r'"'), ""),
                                 textAlign: TextAlign.start,
                                 style: regularBaseFont.copyWith(
                                   color: greyColor,
@@ -182,7 +226,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                 ),
                               ),
                               Text(
-                                "Jenis Kelamin: Pria",
+                                ("Jenis Kelamin: $gender").replaceAll(RegExp(r'"'), ""),
                                 textAlign: TextAlign.start,
                                 style: regularBaseFont.copyWith(
                                   color: greyColor,
@@ -191,7 +235,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                 ),
                               ),
                               Text(
-                                "Status: Saya Sendiri",
+                                ("Status: $status").replaceAll(RegExp(r'"'), ""),
                                 textAlign: TextAlign.start,
                                 style: regularBaseFont.copyWith(
                                   color: greyColor,
@@ -223,7 +267,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                         SizedBox(
                           height: 76,
                           child: ListView.builder(
-                            itemCount: 7,
+                            itemCount: dates.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (_, index) {
                               return Padding(
@@ -232,9 +276,14 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                   left: (index != 0) ? 0 : 20,
                                 ),
                                 child: SelectableDateButton(
-                                  date: "17",
-                                  dayName: "Sen",
-                                  onTap: () {},
+                                  date: dates[index].day.toString(),
+                                  dayName: dates[index].shortDayName,
+                                  isSelected: selectedDate == dates[index],
+                                  onTap: () {
+                                    setState(() {
+                                      selectedDate = dates[index];
+                                    });
+                                  },
                                 ),
                               );
                             },
@@ -244,39 +293,23 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                           padding: EdgeInsets.only(
                             top: 16,
                             left: defaultMargin,
-                            right: defaultMargin,
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SelectableBoxButton(
+                            children: doctor.doctorSchedule.map((schedule) {
+                              return SelectableBoxButton(
                                 borderRadius: 20,
                                 thickBorder: 1.5,
                                 borderColor: lightGreyColor,
                                 fontColor: greyColor,
-                                content: "13.00 - 15.00",
-                                isMarginRight: false,
-                                onTap: () {},
-                              ),
-                              SelectableBoxButton(
-                                borderRadius: 20,
-                                thickBorder: 1.5,
-                                borderColor: lightGreyColor,
-                                fontColor: greyColor,
-                                content: "13.00 - 15.00",
-                                isMarginRight: false,
-                                onTap: () {},
-                              ),
-                              SelectableBoxButton(
-                                borderRadius: 20,
-                                thickBorder: 1.5,
-                                borderColor: lightGreyColor,
-                                fontColor: greyColor,
-                                content: "13.00 - 15.00",
-                                isMarginRight: false,
-                                onTap: () {},
-                              ),
-                            ],
+                                content: schedule.time,
+                                isSelected: selectedTime == schedule.time,
+                                onTap: () {
+                                  setState(() {
+                                    selectedTime = schedule.time;
+                                  });
+                                },
+                              );
+                            }).toList(),
                           ),
                         ),
                         SizedBox(

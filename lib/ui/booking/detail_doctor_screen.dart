@@ -27,7 +27,7 @@ class DetailDoctorScreen extends StatelessWidget {
                           CachedNetworkImage(
                             imageUrl: doctor.photo,
                             width: deviceWidth(context),
-                            height: 275,
+                            height: (getOrientation(context) == Orientation.portrait) ? 275 : 600,
                             fit: BoxFit.cover,
                             placeholder: (_, url) => SpinKitRing(
                               color: accentColor,
@@ -310,7 +310,7 @@ class DetailDoctorScreen extends StatelessWidget {
                       text: "Buat Janji",
                       fontSize: 14,
                       onPressed: () async {
-                        onSubmitPressed(context);
+                        onSubmitPressed(context, doctor);
                       },
                     ),
                   ),
@@ -323,13 +323,17 @@ class DetailDoctorScreen extends StatelessWidget {
     );
   }
 
-  Future<void> onSubmitPressed(BuildContext context) async {
-    bool checkUser = await SharedPreferenceUtil.checkPreference('user');
+  Future<void> onSubmitPressed(BuildContext context, Doctor doctor) async {
+    bool checkUser = await SharedPreferenceUtil.checkPreference('name');
 
     if (checkUser) {
-      Navigator.pushNamed(context, BookingConfirmationScreen.routeName);
+      Navigator.pushNamed(context, BookingConfirmationScreen.routeName,
+        arguments: doctor,
+      );
     } else {
-      Navigator.pushNamed(context, RegisterScreen.routeName);
+      Navigator.pushNamed(context, RegisterScreen.routeName,
+        arguments: doctor,
+      );
     }
   }
 }

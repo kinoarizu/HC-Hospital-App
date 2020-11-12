@@ -1,11 +1,13 @@
 part of 'package:heaven_canceller_hospital/ui/ui.dart';
 
 class CustomRadioButton extends StatelessWidget {
+  final double size;
   final String value;
   final String groupValue;
   final Function(String) onChange;
 
   CustomRadioButton({
+    this.size = 15,
     this.value,
     this.groupValue,
     this.onChange,
@@ -17,8 +19,8 @@ class CustomRadioButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
-          width: 15,
-          height: 15,
+          width: size,
+          height: size,
           child: Radio(
             value: value,
             groupValue: groupValue,

@@ -17,6 +17,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Doctor doctor = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -179,6 +181,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                               onSubmitPressed(
                                 validation: validation,
+                                doctor: doctor,
                                 patient: Patient(
                                   name: nameController.text,
                                   gender: selectedGender,
@@ -205,7 +208,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  Future<void> onSubmitPressed({ValidationProvider validation, Patient patient}) async {
+  Future<void> onSubmitPressed({ValidationProvider validation, Patient patient, Doctor doctor}) async {
     if (selectedGender == null) {
       Flushbar(
         duration: Duration(milliseconds: 1500),
@@ -215,11 +218,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
       )..show(context);
     }
 
-    await SharedPreferenceUtil.setPreference('patient', patient);
+    await SharedPreferenceUtil.setPreference('name', patient.name);
+    await SharedPreferenceUtil.setPreference('gender', patient.gender);
+    await SharedPreferenceUtil.setPreference('email', patient.email);
+    await SharedPreferenceUtil.setPreference('phone_number', patient.phoneNumber);
+    await SharedPreferenceUtil.setPreference('status', patient.status);
 
     await PatientService.storeResource(patient);
 
-    Navigator.pushNamed(context, BookingConfirmationScreen.routeName);
+    Navigator.pushNamed(context, BookingConfirmationScreen.routeName,
+      arguments: doctor,
+    );
+    
     validation.resetChange();
   }
 }
