@@ -4,12 +4,14 @@ class CustomRadioButton extends StatelessWidget {
   final double size;
   final String value;
   final String groupValue;
+  final bool isLabelShow;
   final Function(String) onChange;
 
   CustomRadioButton({
     this.size = 15,
     this.value,
     this.groupValue,
+    this.isLabelShow = true,
     this.onChange,
   });
 
@@ -29,10 +31,10 @@ class CustomRadioButton extends StatelessWidget {
             activeColor: accentColor,
           ),
         ),
-        SizedBox(
+        if (isLabelShow) SizedBox(
           width: 8,
         ),
-        Text(
+        if (isLabelShow) Text(
           value,
           style: regularBaseFont.copyWith(
             fontSize: 12,

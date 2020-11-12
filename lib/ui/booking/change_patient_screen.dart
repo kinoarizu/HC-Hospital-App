@@ -8,7 +8,7 @@ class ChangePatientScreen extends StatefulWidget {
 }
 
 class _ChangePatientScreenState extends State<ChangePatientScreen> {
-  String selectedPatient;
+  String selectedPatient = "Wasitoya";
 
   @override
   Widget build(BuildContext context) {
@@ -67,142 +67,48 @@ class _ChangePatientScreenState extends State<ChangePatientScreen> {
                     ),
                     Column(
                       children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 18,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.symmetric(
-                              vertical: BorderSide(
-                                color: lightGreyColor,
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                children: [
-                                  Text(
-                                    ("Nama: Abu Azis").replaceAll(RegExp(r'"'), ""),
-                                    textAlign: TextAlign.start,
-                                    style: regularBaseFont.copyWith(
-                                      color: greyColor,
-                                      fontSize: 12,
-                                      height: 1.7,
-                                    ),
-                                  ),
-                                  Text(
-                                    ("Jenis Kelamin: Pria").replaceAll(RegExp(r'"'), ""),
-                                    textAlign: TextAlign.start,
-                                    style: regularBaseFont.copyWith(
-                                      color: greyColor,
-                                      fontSize: 12,
-                                      height: 1.7,
-                                    ),
-                                  ),
-                                  Text(
-                                    ("Status: Saya Sendiri").replaceAll(RegExp(r'"'), ""),
-                                    textAlign: TextAlign.start,
-                                    style: regularBaseFont.copyWith(
-                                      color: greyColor,
-                                      fontSize: 12,
-                                      height: 1.7,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              CustomRadioButton(
-                                size: 24,
-                                value: "Pria",
-                                groupValue: selectedPatient,
-                                onChange: (value) {
-                                  setState(() {
-                                    selectedPatient = value;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
+                        PatientRadioOption(
+                          name: "Budiman",
+                          gender: "Pria",
+                          status: "Saya Sendiri",
+                          value: "Budiman",
+                          groupValue: selectedPatient,
+                          onChange: (value) {
+                            setState(() {
+                              selectedPatient = value;
+                            });
+                          },
                         ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 18,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.symmetric(
-                              vertical: BorderSide(
-                                color: lightGreyColor,
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                children: [
-                                  Text(
-                                    ("Nama: Abu Azis").replaceAll(RegExp(r'"'), ""),
-                                    textAlign: TextAlign.start,
-                                    style: regularBaseFont.copyWith(
-                                      color: greyColor,
-                                      fontSize: 12,
-                                      height: 1.7,
-                                    ),
-                                  ),
-                                  Text(
-                                    ("Jenis Kelamin: Pria").replaceAll(RegExp(r'"'), ""),
-                                    textAlign: TextAlign.start,
-                                    style: regularBaseFont.copyWith(
-                                      color: greyColor,
-                                      fontSize: 12,
-                                      height: 1.7,
-                                    ),
-                                  ),
-                                  Text(
-                                    ("Status: Saya Sendiri").replaceAll(RegExp(r'"'), ""),
-                                    textAlign: TextAlign.start,
-                                    style: regularBaseFont.copyWith(
-                                      color: greyColor,
-                                      fontSize: 12,
-                                      height: 1.7,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              CustomRadioButton(
-                                size: 24,
-                                value: "Pria",
-                                groupValue: selectedPatient,
-                                onChange: (value) {
-                                  setState(() {
-                                    selectedPatient = value;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
+                        PatientRadioOption(
+                          name: "Wasitoya",
+                          gender: "Pria",
+                          status: "Kerabat",
+                          value: "Wasitoya",
+                          groupValue: selectedPatient,
+                          onChange: (value) {
+                            setState(() {
+                              selectedPatient = value;
+                            });
+                          },
                         ),
                       ],
                     ),
                     SizedBox(
                       height: 24,
                     ),
-                    GestureDetector(
-                      child: Text(
-                        "Tambah Pasien",
-                        style: mediumBaseFont.copyWith(
-                          color: accentColor,
-                          fontSize: 12,
+                    Center(
+                      child: GestureDetector(
+                        child: Text(
+                          "Tambah Pasien",
+                          style: mediumBaseFont.copyWith(
+                            color: accentColor,
+                            fontSize: 12,
+                          ),
                         ),
+                        onTap: () {
+                          Navigator.pushNamed(context, AddPatientScreen.routeName);
+                        },
                       ),
-                      onTap: () {
-                        
-                      },
                     ),
                     SizedBox(
                       height: 80,

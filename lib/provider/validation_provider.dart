@@ -51,7 +51,7 @@ class ValidationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-    bool isAllValidate() {
+  bool isAllValidate() {
     if (_errorName == "" && _errorEmail == "" && _errorPhoneNumber == "") {
       return true;
     }

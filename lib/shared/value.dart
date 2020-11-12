@@ -1,12 +1,12 @@
 part of 'shared.dart';
 
-const List genders = [
+const List<String> genders = [
   "Semua",
   "Pria",
   "Wanita",
 ];
 
-const List specialities = [
+const List<String> specialities = [
   "Semua",
   "Kulit",
   "Sunat",
@@ -17,3 +17,9 @@ const List specialities = [
   "Wajah",
   "Tulang",
 ];
+
+const List<String> status = [
+  "Anak Kandung",
+  "Kerabat",
+  "Teman",
+]; 

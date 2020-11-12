@@ -1,24 +1,22 @@
 part of 'package:heaven_canceller_hospital/ui/ui.dart';
 
-class RegisterScreen extends StatefulWidget {
-  static String routeName = '/register_screen';
+class AddPatientScreen extends StatefulWidget {
+  static String routeName = '/add_patient_screen';
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  _AddPatientScreenState createState() => _AddPatientScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _AddPatientScreenState extends State<AddPatientScreen> {
   TextEditingController nameController = TextEditingController();
-  TextEditingController handphoneController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+  TextEditingController statusController = TextEditingController();
 
   String selectedGender;
+  String selectedStatus;
   bool isSubmit = false;
 
   @override
   Widget build(BuildContext context) {
-    final Doctor doctor = ModalRoute.of(context).settings.arguments;
-
     return Scaffold(
       body: Stack(
         children: [
@@ -62,7 +60,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               Align(  
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Daftar Pasien",
+                                  "Tambah Pasien",
                                   style: semiBoldBaseFont.copyWith(
                                     fontSize: 18,
                                     color: darkGreyColor,
@@ -70,17 +68,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                               ),
                             ],
-                          ),
-                          SizedBox(
-                            height: 24,
-                          ),
-                          Text(
-                            "Maaf, anda belum terdaftar dalam aplikasi. Harap daftar terlebih dahulu untuk dapat membooking jadwal dengan dokter yang bersangkutan.",
-                            maxLines: 3,
-                            style: mediumBaseFont.copyWith(
-                              fontSize: 12,
-                              color: greyColor,
-                            ),
                           ),
                           SizedBox(
                             height: 24,
@@ -141,31 +128,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           SizedBox(
                             height: 24,
                           ),
-                          CustomTextField(
-                            controller: handphoneController,
-                            labelText: "No Handphone",
-                            hintText: "Masukan No Handphone",
-                            keyboardType: TextInputType.phone,
-                            errorValidation: validation.errorPhoneNumber,
+                          CustomDropdownField(
+                            labelName: "Status",
+                            hintText: "Pilih Salah Satu",
+                            options: status,
                             onChanged: (value) {
-                              validation.changePhoneNumber(value);
+                              selectedStatus = value;
                             },
                           ),
                           SizedBox(
-                            height: 18,
-                          ),
-                          CustomTextField(
-                            controller: emailController,
-                            labelText: "Email",
-                            hintText: "Masukan Email",
-                            keyboardType: TextInputType.emailAddress,
-                            errorValidation: validation.errorEmail,
-                            onChanged: (value) {
-                              validation.changeEmail(value);
-                            },
-                          ),
-                          SizedBox(
-                            height: 64,
+                            height: 220,
                           ),
                           if (!isSubmit) AccentRaisedButton(
                             color: accentColor,
@@ -174,22 +146,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             height: 44,
                             fontSize: 14,
                             borderRadius: 8,
-                            onPressed: validation.isAllValidate() ? () {
+                            onPressed: (validation.errorName == "") ? () {
                               setState(() {
                                 isSubmit = true;
                               });
-
-                              onSubmitPressed(
-                                validation: validation,
-                                doctor: doctor,
-                                patient: Patient(
-                                  name: nameController.text,
-                                  gender: selectedGender,
-                                  email: emailController.text,
-                                  phoneNumber: handphoneController.text,
-                                  status: "Saya Sendiri"
-                                ),
-                              );
+                              Navigator.pushReplacementNamed(context, BookingConfirmationScreen.routeName);
                             } : null,
                           ) else SpinKitRing(
                             color: accentColor,
@@ -206,30 +167,5 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ],
       ),
     );
-  }
-
-  Future<void> onSubmitPressed({ValidationProvider validation, Patient patient, Doctor doctor}) async {
-    if (selectedGender == null) {
-      Flushbar(
-        duration: Duration(milliseconds: 1500),
-        flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: Color(0xFFFF5C83),
-        message: "Jenis Kelamin Harus Diisikan",
-      )..show(context);
-    }
-
-    await SharedPreferenceUtil.setPreference('name', patient.name);
-    await SharedPreferenceUtil.setPreference('gender', patient.gender);
-    await SharedPreferenceUtil.setPreference('email', patient.email);
-    await SharedPreferenceUtil.setPreference('phone_number', patient.phoneNumber);
-    await SharedPreferenceUtil.setPreference('status', patient.status);
-
-    await PatientService.storeResource(patient);
-
-    Navigator.pushReplacementNamed(context, BookingConfirmationScreen.routeName,
-      arguments: doctor,
-    );
-    
-    validation.resetChange();
   }
 }

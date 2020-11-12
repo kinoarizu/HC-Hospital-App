@@ -18,8 +18,7 @@ double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
 double defaultWidth(BuildContext context) => deviceWidth(context) - 2 * defaultMargin;
 
 // Mendapatkan tinggi status bar setiap perangkat pengguna
-double 
-statusBarHeight(BuildContext context) => MediaQuery.of(context).padding.top;
+double statusBarHeight(BuildContext context) => MediaQuery.of(context).padding.top;
 
 // Mendapatkan status posisi orientasi layar setiap pengguna
 Orientation getOrientation(BuildContext context) => MediaQuery.of(context).orientation;

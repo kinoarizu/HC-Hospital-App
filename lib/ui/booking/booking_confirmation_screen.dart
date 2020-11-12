@@ -379,7 +379,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                       text: "Konfirmasi",
                       fontSize: 14,
                       onPressed: () async {
-                        //
+                        Navigator.pushReplacementNamed(context, SuccessBookingScreen.routeName);
                       },
                     ),
                   ),
