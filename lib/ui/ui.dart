@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -19,6 +20,7 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:heaven_canceller_hospital/extensions/extensions.dart';
 import 'package:uuid/uuid.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 part 'wrapper.dart';
 part 'home/home_screen.dart';
@@ -37,6 +39,8 @@ part 'booking/success_booking_screen.dart';
 part 'profile/profile_screen.dart';
 part 'menu/partner_career_screen.dart';
 part 'menu/about_us_screen.dart';
+part 'menu/menu_screen.dart';
+part 'menu/feedback_webview_screen.dart';
 
 part 'static/bottom_navbar.dart';
 part 'static/accent_raised_button.dart';
@@ -62,4 +66,6 @@ part 'booking/components/patient_radio_option.dart';
 part 'service/components/hospital_facility_card.dart';
 part 'service/components/event_promo_card.dart';
 part 'menu/components/about_us_card.dart';
+part 'menu/components/more_menu_card.dart';
+part 'menu/components/vacancy_job_card.dart';
 

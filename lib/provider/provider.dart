@@ -12,3 +12,4 @@ part 'service_facility_provider.dart';
 part 'filter_provider.dart';
 part 'validation_provider.dart';
 part 'patient_provider.dart';
+part 'vacancy_provider.dart';

@@ -17,4 +17,6 @@ Map<String, WidgetBuilder> appRoute = {
   ChangePatientScreen.routeName: (BuildContext context) => ChangePatientScreen(),
   AddPatientScreen.routeName: (BuildContext context) => AddPatientScreen(),
   SuccessBookingScreen.routeName: (BuildContext context) => SuccessBookingScreen(),
+  FeedbackWebviewScreen.routeName: (BuildContext context) => FeedbackWebviewScreen(),
+  PartnerCareerScreen.routeName: (BuildContext context) => PartnerCareerScreen(),
 };

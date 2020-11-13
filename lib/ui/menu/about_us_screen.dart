@@ -28,7 +28,7 @@ class AboutUsScreen extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.only(
-                              left: 24,
+                              left: 20,
                             ),
                             child: GestureDetector(
                               child: Icon(

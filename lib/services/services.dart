@@ -12,3 +12,5 @@ part 'hospital_contact_service.dart';
 part 'service_facility_service.dart';
 part 'patient_service.dart';
 part 'booking_service.dart';
+part 'partner_service.dart';
+part 'vacancy_service.dart';

@@ -10,4 +10,5 @@ List<SingleChildWidget> appProvider = [
   ChangeNotifierProvider(create: (_) => FilterProvider()),
   ChangeNotifierProvider(create: (_) => ValidationProvider()),
   ChangeNotifierProvider(create: (_) => PatientProvider()),
+  ChangeNotifierProvider(create: (_) => VacancyProvider()),
 ];

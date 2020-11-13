@@ -30,7 +30,7 @@ class MainScreen extends StatelessWidget {
                     ServiceScreen(),
                     BookingScreen(),
                     ProfileScreen(),
-                    PartnerCareerScreen(),
+                    MenuScreen(),
                   ],
                 ),
                 BottomNavbar(context),
