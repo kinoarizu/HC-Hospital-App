@@ -12,9 +12,10 @@ class NavigationProvider extends ChangeNotifier {
   int get index => _index;
   PageController get pageIndex => _pageIndex;
 
-  void changeIndex(int index) {
+  void changeIndex(int index, {int initialPage = 0}) {
     _index = index;
     _pageIndex.jumpToPage(index);
+    _pageIndex = PageController(initialPage: initialPage);
 
     notifyListeners();
   }

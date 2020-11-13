@@ -92,7 +92,7 @@ class SuccessBookingScreen extends StatelessWidget {
                           fontSize: 14,
                           text: "Lihat History",
                           onPressed: () {
-                            Provider.of<NavigationProvider>(context, listen: false).changeIndex(3);
+                            Provider.of<NavigationProvider>(context, listen: false).changeIndex(3, initialPage: 3);
                             Navigator.pushNamedAndRemoveUntil(
                               context,
                               MainScreen.routeName,

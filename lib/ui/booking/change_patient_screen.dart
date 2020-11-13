@@ -12,9 +12,13 @@ class _ChangePatientScreenState extends State<ChangePatientScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final PatientProvider patientProvider = Provider.of<PatientProvider>(context, listen: false);
     final Box<Patient> patientBox = Hive.box('patients');
-    final Patient selfUser = patientBox.getAt(0);
-    selectedPatient = selfUser.name;
+    final Patient selfUser = patientBox.getAt(patientProvider.patientIndex);
+    
+    setState(() {
+      selectedPatient = selfUser.name;
+    });
 
     return Scaffold(
       body: Stack(
@@ -110,7 +114,7 @@ class _ChangePatientScreenState extends State<ChangePatientScreen> {
                           ),
                         ),
                         onTap: () {
-                          Navigator.pushNamed(context, AddPatientScreen.routeName);
+                          Navigator.pushReplacementNamed(context, AddPatientScreen.routeName);
                         },
                       ),
                     ),

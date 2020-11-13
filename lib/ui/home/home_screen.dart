@@ -425,7 +425,7 @@ class HomeScreen extends StatelessWidget {
                           itemBuilder: (_, index) {
                             return Padding(
                               padding: EdgeInsets.only(
-                                right: (index == doctorProvider.doctors.length - 1) ? 16 : 20,
+                                right: 20,
                                 left: (index == 0) ? 20 : 0,
                               ),
                               child: DoctorProfileCard(
