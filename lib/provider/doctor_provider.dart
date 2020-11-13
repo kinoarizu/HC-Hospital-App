@@ -15,7 +15,7 @@ class DoctorProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-    void searchResource(String query) async {
+  void searchResource(String query) async {
     _keyword = query;
     _searchedDoctors = doctors.where((element) => element.name.toLowerCase().contains(keyword)).toList();
 

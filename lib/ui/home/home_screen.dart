@@ -404,7 +404,9 @@ class HomeScreen extends StatelessWidget {
                             color: baseColor,
                           ),
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          Provider.of<NavigationProvider>(context, listen: false).changeIndex(2);
+                        },
                       ),
                     ],
                   ),

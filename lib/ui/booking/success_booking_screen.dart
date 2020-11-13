@@ -5,7 +5,7 @@ class SuccessBookingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Doctor doctor = ModalRoute.of(context).settings.arguments;
+    final String bookingID = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
       body: Stack(
@@ -62,7 +62,7 @@ class SuccessBookingScreen extends StatelessWidget {
                           height: 6,
                         ),
                         Text(
-                          "B123840",
+                          bookingID.substring(1, 8).toUpperCase(),
                           style: boldBaseFont.copyWith(
                             color: baseColor,
                             fontSize: 24,
@@ -92,7 +92,12 @@ class SuccessBookingScreen extends StatelessWidget {
                           fontSize: 14,
                           text: "Lihat History",
                           onPressed: () {
-                            Navigator.pushReplacementNamed(context, MainScreen.routeName);
+                            Provider.of<NavigationProvider>(context, listen: false).changeIndex(3);
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              MainScreen.routeName,
+                              (Route<dynamic> route) => false,
+                            );
                           },
                         ),
                         SizedBox(
@@ -106,7 +111,14 @@ class SuccessBookingScreen extends StatelessWidget {
                               fontSize: 12,
                             ),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Provider.of<NavigationProvider>(context, listen: false).changeIndex(0);
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              MainScreen.routeName,
+                              (Route<dynamic> route) => false,
+                            );
+                          },
                         ),
                       ],
                     ),

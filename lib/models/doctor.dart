@@ -39,6 +39,12 @@ class Doctor extends Equatable {
     doctorSchedule,
   ];
 
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'speciality': speciality,
+    'photo': photo,
+  };
+
   static String generateTimeAvailable(List<DoctorSchedule> doctorSchedule) {
     String timeWork = doctorSchedule.singleWhere((element) {
       return DateTimeUtil.generateValidDayName(element.dayName) == DateTime.now().weekday;

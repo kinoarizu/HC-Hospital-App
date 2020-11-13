@@ -8,36 +8,26 @@ class BookingConfirmationScreen extends StatefulWidget {
 }
 
 class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
-  String name;
-  String gender;
-  String status;
-  
   String selectedTime;
   List<DateTime> dates;
   DateTime selectedDate;
 
   TextEditingController messageController = TextEditingController();
 
+  bool isSubmit = false;
+
   @override
   void initState() {
     super.initState();
 
-    _loadPatientPreference();
-
     dates = List.generate(7, (index) => DateTime.now().add(Duration(days: index)));
-    selectedDate = dates[0];
-  }
-
-  void _loadPatientPreference() async {
-    name = await SharedPreferenceUtil.getPreference('name');
-    gender = await SharedPreferenceUtil.getPreference('gender');
-    status = await SharedPreferenceUtil.getPreference('status');
-    
-    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
+    final PatientProvider patientProvider = Provider.of<PatientProvider>(context);
+    final Box<Patient> patientBox = Hive.box('patients');
+    final Patient patient = patientBox.getAt(patientProvider.patientIndex);
     final Doctor doctor = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
@@ -217,7 +207,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                 height: 8,
                               ),
                               Text(
-                                ("Nama: $name").replaceAll(RegExp(r'"'), ""),
+                                "Nama: ${patient.name}",
                                 textAlign: TextAlign.start,
                                 style: regularBaseFont.copyWith(
                                   color: greyColor,
@@ -226,7 +216,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                 ),
                               ),
                               Text(
-                                ("Jenis Kelamin: $gender").replaceAll(RegExp(r'"'), ""),
+                                "Jenis Kelamin: ${patient.gender}",
                                 textAlign: TextAlign.start,
                                 style: regularBaseFont.copyWith(
                                   color: greyColor,
@@ -235,7 +225,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                 ),
                               ),
                               Text(
-                                ("Status: $status").replaceAll(RegExp(r'"'), ""),
+                                "Status: ${patient.status}",
                                 textAlign: TextAlign.start,
                                 style: regularBaseFont.copyWith(
                                   color: greyColor,
@@ -371,7 +361,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                         ),
                       ],
                     ),
-                    child: AccentRaisedButton(
+                    child: (!isSubmit) ? AccentRaisedButton(
                       width: defaultWidth(context),
                       height: 44,
                       color: accentColor,
@@ -379,8 +369,20 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                       text: "Konfirmasi",
                       fontSize: 14,
                       onPressed: () async {
-                        Navigator.pushReplacementNamed(context, SuccessBookingScreen.routeName);
+                        setState(() {
+                          isSubmit = true;
+                        });
+                        onSubmitPressed(
+                          context,
+                          doctor: doctor,
+                          patientName: patient.name,
+                          patientGender: patient.gender,
+                          patientStatus: patient.status,
+                        );
                       },
+                    ) : SpinKitRing(
+                      color: accentColor,
+                      size: 40,
                     ),
                   ),
                 ),
@@ -390,5 +392,53 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> onSubmitPressed(BuildContext context, {Doctor doctor, String patientName, String patientGender, String patientStatus}) async {
+    if (selectedDate == null) {
+      setState(() {
+        isSubmit = false;
+      });
+
+      Flushbar(
+        duration: Duration(milliseconds: 1500),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Color(0xFFFF5C83),
+        message: "Harap Pilih Tanggal Booking",
+      )..show(context);
+    } 
+    else if (selectedTime == null) {
+      setState(() {
+        isSubmit = false;
+      });      
+
+      Flushbar(
+        duration: Duration(milliseconds: 1500),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Color(0xFFFF5C83),
+        message: "Harap Pilih Jam Booking",
+      )..show(context);
+    }
+    else {
+      Uuid uuid = Uuid();
+
+      Booking booking = Booking(
+        id: uuid.v4(),
+        doctor: doctor,
+        schedule: "${selectedDate.day} ${selectedDate.monthName} ${selectedDate.year}, $selectedTime",
+        message: messageController.text ?? "-",
+        patient: Patient(
+          name: patientName,
+          gender: patientGender,
+          status: patientStatus,
+        ),
+      );
+
+      await BookingService.storeResource(booking);
+      
+      Navigator.pushReplacementNamed(context, SuccessBookingScreen.routeName,
+        arguments: booking.id,
+      );
+    }
   }
 }

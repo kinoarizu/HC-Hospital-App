@@ -324,9 +324,9 @@ class DetailDoctorScreen extends StatelessWidget {
   }
 
   Future<void> onSubmitPressed(BuildContext context, Doctor doctor) async {
-    bool checkUser = await SharedPreferenceUtil.checkPreference('name');
+    final Box<Patient> patientBox = Hive.box('patients');
 
-    if (checkUser) {
+    if (patientBox.length != 0) {
       Navigator.pushNamed(context, BookingConfirmationScreen.routeName,
         arguments: doctor,
       );

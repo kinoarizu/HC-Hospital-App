@@ -1,15 +1,15 @@
 part of 'services.dart';
 
 class PatientService {
-  static CollectionReference _userCollection = FirebaseFirestore.instance.collection('patient');
+  static CollectionReference _userCollection = FirebaseFirestore.instance.collection('patients');
 
-  static Future<void> storeResource(Patient user) async {
+  static Future<void> storeResource(Patient patient) async {
     await _userCollection.doc().set({
-      'name': user.name,
-      'gender': user.gender,
-      'email': user.email,
-      'phone_number': user.phoneNumber,
-      'status': user.status,
+      'name': patient.name,
+      'gender': patient.gender,
+      'email': patient.email,
+      'phone_number': patient.phoneNumber,
+      'status': patient.status,
     });
   }
 }

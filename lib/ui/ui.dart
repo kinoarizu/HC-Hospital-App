@@ -4,7 +4,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:heaven_canceller_hospital/utils/utils.dart';
+import 'package:heaven_canceller_hospital/models/patient.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:map_launcher/map_launcher.dart' as mapLauncher;
 import 'package:provider/provider.dart';
 import 'package:heaven_canceller_hospital/models/models.dart';
@@ -16,6 +18,7 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:heaven_canceller_hospital/extensions/extensions.dart';
+import 'package:uuid/uuid.dart';
 
 part 'wrapper.dart';
 part 'home/home_screen.dart';

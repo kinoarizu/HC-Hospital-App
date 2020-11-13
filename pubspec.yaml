@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  build_runner: ^1.10.4
   cached_network_image: ^2.3.3
   carousel_slider: ^2.3.1
   cloud_firestore: ^0.14.2
@@ -33,10 +34,14 @@ dependencies:
   flushbar: ^1.10.4
   flutter_spinkit: ^4.1.2+1
   google_maps_flutter: ^1.0.5
+  hive: ^1.4.4+1
+  hive_flutter: ^0.3.1
+  hive_generator: ^0.8.2
   map_launcher: ^0.12.2
+  path_provider: ^1.6.24
   provider: ^4.3.2+2
-  shared_preferences: ^0.5.12+4
   url_launcher: ^5.7.8
+  uuid: ^2.2.2
 
 dev_dependencies:
   flutter_test:

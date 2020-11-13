@@ -146,11 +146,19 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
                             height: 44,
                             fontSize: 14,
                             borderRadius: 8,
-                            onPressed: (validation.errorName == "") ? () {
+                            onPressed: (validation.errorName == "" && selectedGender != null && selectedStatus != null) ? () {
                               setState(() {
                                 isSubmit = true;
                               });
-                              Navigator.pushReplacementNamed(context, BookingConfirmationScreen.routeName);
+                              onSubmitPressed(
+                                context,
+                                validation, 
+                                patient: Patient(
+                                  name: nameController.text,
+                                  gender: selectedGender,
+                                  status: selectedStatus,
+                                ),
+                              );
                             } : null,
                           ) else SpinKitRing(
                             color: accentColor,
@@ -167,5 +175,13 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
         ],
       ),
     );
+  }
+
+  void onSubmitPressed(BuildContext context, ValidationProvider validation, {Patient patient}) {
+    Patient.register(patient);
+    PatientService.storeResource(patient);
+
+    Navigator.pop(context);
+    validation.resetChange();
   }
 }

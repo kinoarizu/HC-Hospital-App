@@ -44,29 +44,29 @@ extension DateTimeExtension on DateTime {
   String get monthName {
     switch (this.month) {
       case 1:
-        return 'January';
+        return 'Januari';
       case 2:
-        return 'February';
+        return 'Februari';
       case 3:
-        return 'March';
+        return 'Maret';
       case 4:
         return 'April';
       case 5:
-        return 'May';
+        return 'Mei';
       case 6:
-        return 'June';
+        return 'Juni';
       case 7:
-        return 'July';
+        return 'Juli';
       case 8:
-        return 'August';
+        return 'Agustus';
       case 9:
         return 'September';
       case 10:
-        return 'October';
+        return 'Oktober';
       case 11:
         return 'November';
       default:
-        return 'December';
+        return 'Desember';
     }
   }
 }

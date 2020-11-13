@@ -217,12 +217,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
         message: "Jenis Kelamin Harus Diisikan",
       )..show(context);
     }
-
-    await SharedPreferenceUtil.setPreference('name', patient.name);
-    await SharedPreferenceUtil.setPreference('gender', patient.gender);
-    await SharedPreferenceUtil.setPreference('email', patient.email);
-    await SharedPreferenceUtil.setPreference('phone_number', patient.phoneNumber);
-    await SharedPreferenceUtil.setPreference('status', patient.status);
+    
+    Patient.register(patient);
 
     await PatientService.storeResource(patient);
 

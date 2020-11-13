@@ -1,3 +1,5 @@
+import 'patient.dart';
+
 import 'package:equatable/equatable.dart';
 import 'package:heaven_canceller_hospital/utils/utils.dart';
 
@@ -10,4 +12,4 @@ part 'contact_complaint.dart';
 part 'hospital_contact.dart';
 part 'service_facility.dart';
 part 'doctor_schedule.dart';
-part 'patient.dart';
+part 'booking.dart';
