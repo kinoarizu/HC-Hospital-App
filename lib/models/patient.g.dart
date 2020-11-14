@@ -17,27 +17,30 @@ class PatientAdapter extends TypeAdapter<Patient> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Patient(
-      name: fields[0] as String,
-      gender: fields[1] as String,
-      email: fields[2] as String,
-      phoneNumber: fields[3] as String,
-      status: fields[4] as String,
+      id: fields[0] as String,
+      name: fields[1] as String,
+      gender: fields[2] as String,
+      email: fields[3] as String,
+      phoneNumber: fields[4] as String,
+      status: fields[5] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, Patient obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
-      ..write(obj.name)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.gender)
+      ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.email)
+      ..write(obj.gender)
       ..writeByte(3)
-      ..write(obj.phoneNumber)
+      ..write(obj.email)
       ..writeByte(4)
+      ..write(obj.phoneNumber)
+      ..writeByte(5)
       ..write(obj.status);
   }
 

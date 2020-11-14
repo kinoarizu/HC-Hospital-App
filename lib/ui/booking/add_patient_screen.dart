@@ -17,6 +17,9 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Box<Patient> patientBox = Hive.box('patients');
+    final Patient patient = patientBox.getAt(0);
+
     return WillPopScope(
       onWillPop: () async {
         Navigator.pushReplacementNamed(context, ChangePatientScreen.routeName);
@@ -161,6 +164,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
                                   context,
                                   validation, 
                                   patient: Patient(
+                                    id: patient.id,
                                     name: nameController.text,
                                     gender: selectedGender,
                                     status: selectedStatus,

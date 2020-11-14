@@ -6,6 +6,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:heaven_canceller_hospital/models/patient.dart';
+import 'package:heaven_canceller_hospital/utils/utils.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:map_launcher/map_launcher.dart' as mapLauncher;
@@ -36,11 +37,12 @@ part 'booking/booking_confirmation_screen.dart';
 part 'booking/change_patient_screen.dart';
 part 'booking/add_patient_screen.dart';
 part 'booking/success_booking_screen.dart';
-part 'profile/profile_screen.dart';
 part 'menu/partner_career_screen.dart';
 part 'menu/about_us_screen.dart';
 part 'menu/menu_screen.dart';
 part 'menu/feedback_webview_screen.dart';
+part 'menu/detail_partner_vacancy_screen.dart';
+part 'profile/profile_screen.dart';
 
 part 'static/bottom_navbar.dart';
 part 'static/accent_raised_button.dart';
@@ -68,4 +70,6 @@ part 'service/components/event_promo_card.dart';
 part 'menu/components/about_us_card.dart';
 part 'menu/components/more_menu_card.dart';
 part 'menu/components/vacancy_job_card.dart';
+part 'profile/components/notification_personal_card.dart';
+part 'profile/components/history_personal_card.dart';
 

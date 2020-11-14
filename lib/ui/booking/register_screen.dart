@@ -179,10 +179,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 isSubmit = true;
                               });
 
+                              Uuid uuid = Uuid();
+
                               onSubmitPressed(
                                 validation: validation,
                                 doctor: doctor,
                                 patient: Patient(
+                                  id: uuid.v4(),
                                   name: nameController.text,
                                   gender: selectedGender,
                                   email: emailController.text,

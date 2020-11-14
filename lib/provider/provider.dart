@@ -13,3 +13,5 @@ part 'filter_provider.dart';
 part 'validation_provider.dart';
 part 'patient_provider.dart';
 part 'vacancy_provider.dart';
+part 'personal_notification_provider.dart';
+part 'booking_provider.dart';

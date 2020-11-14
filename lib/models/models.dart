@@ -15,3 +15,4 @@ part 'doctor_schedule.dart';
 part 'booking.dart';
 part 'partner.dart';
 part 'vacancy.dart';
+part 'personal_notification.dart';

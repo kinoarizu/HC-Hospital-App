@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:heaven_canceller_hospital/models/models.dart';
 import 'package:heaven_canceller_hospital/models/patient.dart';
+import 'package:hive/hive.dart';
 
 part 'event_promo_service.dart';
 part 'office_location_service.dart';
@@ -14,3 +15,4 @@ part 'patient_service.dart';
 part 'booking_service.dart';
 part 'partner_service.dart';
 part 'vacancy_service.dart';
+part 'personal_notification_service.dart';

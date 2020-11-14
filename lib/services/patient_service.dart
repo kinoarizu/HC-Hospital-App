@@ -5,6 +5,7 @@ class PatientService {
 
   static Future<void> storeResource(Patient patient) async {
     await _userCollection.doc().set({
+      'id': patient.id,
       'name': patient.name,
       'gender': patient.gender,
       'email': patient.email,

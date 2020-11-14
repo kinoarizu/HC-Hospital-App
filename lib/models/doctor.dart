@@ -45,6 +45,18 @@ class Doctor extends Equatable {
     'photo': photo,
   };
 
+  factory Doctor.fromJson(Map<String, dynamic> json) => Doctor(
+    name: json['name'],
+    gender: json['gender'],
+    speciality: json['speciality'],
+    photo: json['photo'],
+    star: json['star'],
+    status: json['status'],
+    biography: json['biography'],
+    education: json['education'],
+    credential: json['credential'],
+  );
+
   static String generateTimeAvailable(List<DoctorSchedule> doctorSchedule) {
     String timeWork = doctorSchedule.singleWhere((element) {
       return DateTimeUtil.generateValidDayName(element.dayName) == DateTime.now().weekday;

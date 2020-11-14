@@ -13,7 +13,7 @@ class VacancyService {
         Vacancy(
           title: document.data()['title'],
           imageURL: document.data()['image_url'],
-          date: document.data()['date'],
+          link: document.data()['link'],
           content: (document.data()['content'] as List).map((e) => e.toString()).toList(),
         ),
       );

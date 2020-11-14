@@ -375,6 +375,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                         onSubmitPressed(
                           context,
                           doctor: doctor,
+                          patientID: patient.id,
                           patientName: patient.name,
                           patientGender: patient.gender,
                           patientStatus: patient.status,
@@ -394,7 +395,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
     );
   }
 
-  Future<void> onSubmitPressed(BuildContext context, {Doctor doctor, String patientName, String patientGender, String patientStatus}) async {
+  Future<void> onSubmitPressed(BuildContext context, {Doctor doctor, String patientID, String patientName, String patientGender, String patientStatus}) async {
     if (selectedDate == null) {
       setState(() {
         isSubmit = false;
@@ -424,9 +425,11 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
 
       Booking booking = Booking(
         id: uuid.v4(),
+        userID: patientID,
         doctor: doctor,
         schedule: "${selectedDate.day} ${selectedDate.monthName} ${selectedDate.year}, $selectedTime",
         message: messageController.text ?? "-",
+        time: DateTime.now().millisecondsSinceEpoch,
         patient: Patient(
           name: patientName,
           gender: patientGender,

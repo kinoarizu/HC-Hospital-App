@@ -51,26 +51,31 @@ class BottomNavbar extends StatelessWidget {
           ),
           items: [
             _buildBottomNavBarItem(
+              context,
               label: "Home",
               icon: "assets/image/ic_home.png",
               activeIcon: "assets/image/ic_home_active.png",
             ),
             _buildBottomNavBarItem(
+              context,
               label: "Layanan",
               icon: "assets/image/ic_layanan.png",
               activeIcon: "assets/image/ic_layanan_active.png",
             ),
             _buildBottomNavBarItem(
+              context,
               label: "Booking",
               icon: "assets/image/ic_booking.png",
               activeIcon: "assets/image/ic_booking_active.png",
             ),
             _buildBottomNavBarItem(
+              context,
               label: "Profile",
               icon: "assets/image/ic_profile.png",
               activeIcon: "assets/image/ic_profile_active.png",
             ),
             _buildBottomNavBarItem(
+              context,
               label: "More",
               icon: "assets/image/ic_more.png",
               activeIcon: "assets/image/ic_more_active.png",
@@ -89,17 +94,87 @@ class BottomNavbar extends StatelessWidget {
 /// tidak membuat kode berulang maka dibuat function ini agar saya tinggal 
 /// memasukan [label], [icon], dan [activeIcon] setiap pemanggilan.
 
-BottomNavigationBarItem _buildBottomNavBarItem({String label, String icon, String activeIcon}) {
+BottomNavigationBarItem _buildBottomNavBarItem(BuildContext context, {String label, String icon, String activeIcon}) {
   return BottomNavigationBarItem(
     label: label,
-    icon: Container(
+    icon: (label == "Profile") ? Consumer<NavigationProvider>(
+      builder: (context, navigationProvider, _) { 
+        return Stack(
+          children: [
+            Container(
+              height: 24,
+              margin: EdgeInsets.only(bottom: 6),
+              child: Image.asset(
+                icon,
+              ),
+            ),
+            Positioned(
+              top: 0,
+              right: 0,
+              child: Container(
+                width: 12,
+                height: 12,
+                decoration: BoxDecoration(
+                  color: orangeColor,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Text(
+                    "2",
+                    style: semiBoldBaseFont.copyWith(
+                      fontSize: 7.8,
+                      color: baseColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    ) : Container(
       height: 24,
       margin: EdgeInsets.only(bottom: 6),
       child: Image.asset(
         icon,
       ),
     ),
-    activeIcon: Container(
+    activeIcon: (label == "Profile") ? Consumer<NavigationProvider>(
+      builder: (context, navigationProvider, _) { 
+        return Stack(
+          children: [
+            Container(
+              height: 24,
+              margin: EdgeInsets.only(bottom: 6),
+              child: Image.asset(
+                activeIcon,
+              ),
+            ),
+            Positioned(
+              top: 0,
+              right: 0,
+              child: Container(
+                width: 12,
+                height: 12,
+                decoration: BoxDecoration(
+                  color: orangeColor,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Text(
+                    "2",
+                    style: semiBoldBaseFont.copyWith(
+                      fontSize: 7.8,
+                      color: baseColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    ) : Container(
       height: 24,
       margin: EdgeInsets.only(bottom: 6),
       child: Image.asset(

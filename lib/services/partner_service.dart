@@ -13,6 +13,9 @@ class PartnerService {
         Partner(
           title: document.data()['title'],
           imageURL: document.data()['image_url'],
+          date: document.data()['date'],
+          type: document.data()['type'],
+          content: (document.data()['content'] as List).map((e) => e.toString()).toList(),
         ),
       );
     }
