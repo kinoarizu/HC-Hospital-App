@@ -21,6 +21,7 @@ class DetailServiceScreen extends StatelessWidget {
                 ),
                 ListView(
                   children: [
+                    /// SECTION: TITLE BACK BUTTON
                     SizedBox(
                       height: 24,
                     ),
@@ -59,6 +60,8 @@ class DetailServiceScreen extends StatelessWidget {
                     SizedBox(
                       height: 24,
                     ),
+
+                    /// SECTION: TITLE IMAGE CONTENT
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 20,
@@ -125,6 +128,8 @@ class DetailServiceScreen extends StatelessWidget {
                           SizedBox(
                             height: 16,
                           ),
+
+                          /// SECTION: DESCRIPTION TEXT CONTENT
                           RichText(
                             textAlign:TextAlign.start,
                             text: TextSpan(

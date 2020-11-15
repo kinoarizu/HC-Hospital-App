@@ -1,8 +1,12 @@
 part of 'services.dart';
 
+///* Class Service ServiceFacility
+/// Class untuk menghandle resource fasilitas dan layanan
+
 class ServiceFacilityService {
   static CollectionReference _serviceFasilityCollection = FirebaseFirestore.instance.collection('service_facility');
 
+  /// Melakukan fetch semua data fasilitas dan layanan
   static Future<List<ServiceFacility>> getResource() async {
     QuerySnapshot snapshot = await _serviceFasilityCollection.get();
 

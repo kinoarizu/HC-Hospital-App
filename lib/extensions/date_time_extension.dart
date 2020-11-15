@@ -1,8 +1,13 @@
 part of 'extensions.dart';
 
+///* DateTime Extension - DateTime Custom Extension
+/// Extension untuk menambahkan ekstensi tambahan untuk class DateTime
+
 extension DateTimeExtension on DateTime {
+  /// Mengenerate whari, bulan dan tahun dalam bentuk string
   String get dateAndtime => "${this.day} ${this.monthName} ${this.year}";
 
+  /// Menggenerate singkatan hari berdasarkan urutan waktu dalam sepekan
   String get shortDayName {
     switch (this.weekday) {
       case 1:
@@ -22,6 +27,7 @@ extension DateTimeExtension on DateTime {
     }
   }
 
+  /// Menggenerate nama hari berdasarkan urutannya dalam sepekan
   String get dayName {
     switch (this.weekday) {
       case 1:
@@ -41,6 +47,7 @@ extension DateTimeExtension on DateTime {
     }
   }
 
+  /// Menggenerate nama bulan berdasarkan urutannya dalam setahun
   String get monthName {
     switch (this.month) {
       case 1:

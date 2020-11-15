@@ -34,6 +34,7 @@ class _ChangePatientScreenState extends State<ChangePatientScreen> {
                 ),
                 ListView(
                   children: [
+                    /// SECTION: TITLE BACK BUTTON
                     Padding(
                       padding: EdgeInsets.only(
                         top: defaultMargin,
@@ -73,6 +74,8 @@ class _ChangePatientScreenState extends State<ChangePatientScreen> {
                     SizedBox(
                       height: 18,
                     ),
+
+                    /// SECTION: PATIENT RADIO OPTION
                     Container(
                       height: patientBox.length.toDouble() * 100,
                       child: Consumer<PatientProvider>(

@@ -1,8 +1,12 @@
 part of 'services.dart';
 
+///* Class Service Booking
+/// Class untuk menghandle resource booking dokter
+
 class BookingService {
   static CollectionReference _bookingCollection = FirebaseFirestore.instance.collection('bookings');
   
+  /// Melakukan simpan data collection booking dokter
   static Future<void> storeResource(Booking booking) async {
     await _bookingCollection.doc().set({
       'id': booking.id,
@@ -15,6 +19,7 @@ class BookingService {
     });
   }
 
+  /// Melakukan fetch semua data booking dokter
   static Future<List<Booking>> getResource() async {
     QuerySnapshot snapshot = await _bookingCollection.get();
 

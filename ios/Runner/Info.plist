@@ -54,5 +54,8 @@
 		<string>osmandmaps</string>
 		<string>dgis</string>
 	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
+
 </dict>
 </plist>

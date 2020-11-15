@@ -96,8 +96,19 @@ class BottomNavbar extends StatelessWidget {
 
 BottomNavigationBarItem _buildBottomNavBarItem(BuildContext context, {String label, String icon, String activeIcon}) {
   final Box<Patient> patientBox = Hive.box('patients');
-  final int notifCount = Provider.of<PersonalNotificationProvider>(context).personalNotification.length;
-  final int bookingCount = Provider.of<BookingProvider>(context).bookings.length;
+  final PersonalNotificationProvider notifProvider = Provider.of<PersonalNotificationProvider>(context);
+  final BookingProvider bookingProvider = Provider.of<BookingProvider>(context);
+
+  int notifCount;
+  int bookingCount;
+
+  if (notifProvider.personalNotification != null && bookingProvider.bookings != null) {
+    notifCount = notifProvider.personalNotification.length;
+    bookingCount = bookingProvider.bookings.length;
+  } else {
+    notifCount = 0;
+    bookingCount = 0;
+  }
 
   return BottomNavigationBarItem(
     label: label,

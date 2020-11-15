@@ -1,5 +1,8 @@
 part of 'models.dart';
 
+///* Class Model News
+/// Model untuk mengelola data collection berita seputar dunia kesehatan
+
 class News extends Equatable {
   final String title;
   final String imageURL;

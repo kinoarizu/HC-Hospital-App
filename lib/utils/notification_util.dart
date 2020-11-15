@@ -1,6 +1,10 @@
 part of 'utils.dart';
 
+///* Notification Utility Class - DateTime Custom Configuration
+/// Class ini dibuat agar dapat membungkus method utilitas waktu dan tanggal
+
 class NotificationUtil {
+  /// Memunculkan notifikasi dari server onesignal ke aplikasi ini berdasarkan id pengguna
   static Future<void> pushNotification({String content, String heading}) async {
     OSPermissionSubscriptionState status = await OneSignal.shared.getPermissionSubscriptionState();
 

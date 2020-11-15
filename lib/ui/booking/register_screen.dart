@@ -41,6 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       builder: (context, validation, _) => Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          /// SECTION: TITLE BACK BUTTON
                           Stack(
                             children: [
                               Align(
@@ -71,6 +72,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ],
                           ),
+
+                          /// SECTION: FORGIVE MESSAGE TEXT
                           SizedBox(
                             height: 24,
                           ),
@@ -82,6 +85,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               color: greyColor,
                             ),
                           ),
+
+                          /// SECTION: INPUT FIELD FORM
                           SizedBox(
                             height: 24,
                           ),
@@ -167,6 +172,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           SizedBox(
                             height: 64,
                           ),
+
+                          /// SECTION: BUTTON NEXT NAVIGATION
                           if (!isSubmit) AccentRaisedButton(
                             color: accentColor,
                             width: defaultWidth(context),
@@ -211,6 +218,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
+  /// Method ketika tombol "daftar akun ditekan"
   Future<void> onSubmitPressed({ValidationProvider validation, Patient patient, Doctor doctor}) async {
     if (selectedGender == null) {
       Flushbar(

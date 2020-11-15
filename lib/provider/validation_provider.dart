@@ -1,5 +1,8 @@
 part of 'provider.dart';
 
+///* Class Provider Doctor
+/// Class untuk menghandle state data validasi error input form 
+
 class ValidationProvider extends ChangeNotifier {
   String _errorName;
   String _errorEmail;
@@ -9,6 +12,7 @@ class ValidationProvider extends ChangeNotifier {
   String get errorEmail => _errorEmail;
   String get errorPhoneNumber => _errorPhoneNumber;
 
+  /// Memantau input nama untuk dilakukan validasi
   void changeName(String value) {
     if (value.length == 0) {
       _errorName = "Nama Pasien Harus Diisi";
@@ -20,6 +24,7 @@ class ValidationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Memantau input email untuk dilakukan validasi
   void changeEmail(String value) {
     if (value.length == 0) {
       _errorEmail = "Email Harus Diisi";
@@ -34,6 +39,7 @@ class ValidationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Memantau input nomor telepon untuk dilakukan validasi
   void changePhoneNumber(String value) {
     if (value.length == 0) {
       _errorPhoneNumber = "No Handphone Harus Diisi";
@@ -51,6 +57,7 @@ class ValidationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Mengecek apakah semua input telah terisi
   bool isAllValidate() {
     if (_errorName == "" && _errorEmail == "" && _errorPhoneNumber == "") {
       return true;
@@ -60,6 +67,7 @@ class ValidationProvider extends ChangeNotifier {
     }
   }
 
+  /// Mereset semua error input form
   void resetChange() {
     _errorName = null;
     _errorEmail = null;

@@ -113,7 +113,8 @@ class BookingScreen extends StatelessWidget {
                         ),
                       );
                     }
-
+                    
+                    /// SECTION: EMPTY VIEW STATE
                     return Container(
                       height: 360,
                       child: EmptyViewState(),

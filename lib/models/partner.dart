@@ -1,5 +1,8 @@
 part of 'models.dart';
 
+///* Class Model Partner
+/// Model untuk mengelola data collection partner kerja rumah sakit
+
 class Partner extends Equatable {
   final String title;
   final String imageURL;

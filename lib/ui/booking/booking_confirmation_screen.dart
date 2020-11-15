@@ -44,6 +44,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                 ),
                 ListView(
                   children: [
+                    /// SECTION: TITLE BACK BUTTON
                     Padding(
                       padding: EdgeInsets.only(
                         top: defaultMargin,
@@ -83,6 +84,8 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                     SizedBox(
                       height: 36,
                     ),
+
+                    /// SECTION: DOCTOR BOOKED CARD
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: defaultMargin,
@@ -169,6 +172,8 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                         SizedBox(
                           height: 14,
                         ),
+
+                        /// SECTION: SELECTED PATIENT CARD
                         Container(
                           width: deviceWidth(context),
                           padding: EdgeInsets.symmetric(
@@ -239,6 +244,8 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                         SizedBox(
                           height: defaultMargin,
                         ),
+
+                        /// SECTION: DATE CARD LISTVIEW
                         Padding(
                           padding: EdgeInsets.symmetric(
                             horizontal: defaultMargin,
@@ -279,6 +286,8 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                             },
                           ),
                         ),
+
+                        /// SECTION: TIME LISTVIEW CARD
                         Padding(
                           padding: EdgeInsets.only(
                             top: 16,
@@ -305,6 +314,8 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                         SizedBox(
                           height: 12,
                         ),
+
+                        /// SECTION: PERSONAL MESSAGE INPUT
                         Padding(
                           padding: EdgeInsets.symmetric(
                             horizontal: defaultMargin,
@@ -341,6 +352,8 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                     ),
                   ],
                 ),
+
+                /// SECTION: BUTTON NEXT SCREEN
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
@@ -395,6 +408,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
     );
   }
 
+  /// Method ketika tombol 'konfirmasi' ditekan
   Future<void> onSubmitPressed(BuildContext context, {Doctor doctor, String patientID, String patientName, String patientGender, String patientStatus}) async {
     if (selectedDate == null) {
       setState(() {

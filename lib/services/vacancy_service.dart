@@ -1,8 +1,12 @@
 part of 'services.dart';
 
+///* Class Service Vancancy
+/// Class untuk menghandle resource lowongan rumah sakit
+
 class VacancyService {
   static CollectionReference _vacancyCollection = FirebaseFirestore.instance.collection('vacancies');
 
+  /// Melakukan fetch semua data lowongan rumah sakit
   static Future<List<Vacancy>> getResource() async {
     QuerySnapshot snapshot = await _vacancyCollection.get();
 

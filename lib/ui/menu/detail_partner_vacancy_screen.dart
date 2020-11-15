@@ -21,6 +21,7 @@ class DetailPartnerVacancyScreen extends StatelessWidget {
                 ),
                 ListView(
                   children: [
+                    /// SECTION: TITLE BACK BUTTON
                     SizedBox(
                       height: 24,
                     ),
@@ -59,6 +60,8 @@ class DetailPartnerVacancyScreen extends StatelessWidget {
                     SizedBox(
                       height: 24,
                     ),
+
+                    /// SECTION: IMAGE TITLE CONTENT
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 20,
@@ -129,6 +132,8 @@ class DetailPartnerVacancyScreen extends StatelessWidget {
                           SizedBox(
                             height: 16,
                           ),
+
+                          /// SECTION: TEXT DESCRIPTION CONTENT
                           RichText(
                             textAlign:TextAlign.start,
                             text: TextSpan(

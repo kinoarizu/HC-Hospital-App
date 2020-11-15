@@ -1,5 +1,8 @@
 part of 'models.dart';
 
+///* Class Model OfficeLocation
+/// Model untuk mengelola data collection kontak menghubungi rumah sakit
+
 class OfficeLocation extends Equatable {
   final String placeName;
   final String address;

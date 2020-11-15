@@ -11,6 +11,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final Box<Patient> patientBox = Hive.box('patients');
+    final int bookingCount = Provider.of<BookingProvider>(context).bookings.length;
+    final int notifCount = Provider.of<PersonalNotificationProvider>(context).personalNotification.length;
 
     return Scaffold(
       body: Stack(
@@ -27,6 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SingleChildScrollView(
                   child: Stack(
                     children: [
+                      /// SECTION: TITLE BACK BUTTON
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Padding(
@@ -61,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           Container(
                             width: deviceWidth(context),
-                            height: (275 + 106 * 4).toDouble(),  
+                            height: (isNotificationTab) ? (275 + 106 * notifCount).toDouble() : (275 + 106 * bookingCount).toDouble(),  
                             padding: EdgeInsets.symmetric(
                               vertical: 16,
                             ),
@@ -78,6 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: (patientBox.isNotEmpty) ? Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
+                                /// SECTION: USER PROFILE CONTENT
                                 SizedBox(
                                   height: 50,
                                 ),
@@ -115,6 +119,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 SizedBox(
                                   height: 24,
                                 ),
+
+                                /// SECTION: TAB BAR NOTIFICATION
                                 Container(
                                   width: defaultWidth(context),
                                   height: 43,
@@ -238,6 +244,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 SizedBox(
                                   height: 16,
                                 ),
+
+                                /// SECTION: NOTIFICATION CARD LIST
                                 if (isNotificationTab) Consumer<PersonalNotificationProvider>(
                                   builder: (context, notification, _) => Column(
                                     children: notification.personalNotification.map((notif) {
@@ -253,6 +261,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     }).toList(),
                                   ),
                                 ),
+
+                                /// SECTION: HISTORY CARD LIST
                                 if (!isNotificationTab) Consumer<BookingProvider>(
                                   builder: (context, bookingProvider, _) {
                                     if (bookingProvider.bookings.length != 0) {
@@ -319,6 +329,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                           ),
+
+                          /// SECTION: PHOTO PROFILE CONTENT
                           if (patientBox.isNotEmpty) Align(
                             alignment: Alignment.center,
                             child: Container(

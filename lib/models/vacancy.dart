@@ -1,5 +1,8 @@
 part of 'models.dart';
 
+///* Class Model Vacancy
+/// Model untuk mengelola data collection lowongan kerja di rumah sakit
+
 class Vacancy extends Equatable {
   final String title;
   final String imageURL;

@@ -1,5 +1,8 @@
 part of 'models.dart';
 
+///* Class Model Booking
+/// Model untuk mengelola data collection pengguna yang booking dokter
+
 class Booking extends Equatable {
   final String id;
   final String userID;

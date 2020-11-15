@@ -21,6 +21,7 @@ class DetailNotificationScreen extends StatelessWidget {
                 ),
                 ListView(
                   children: [
+                    /// SECTION: TITLE BACK BUTTON
                     SizedBox(
                       height: 24,
                     ),
@@ -59,6 +60,8 @@ class DetailNotificationScreen extends StatelessWidget {
                     SizedBox(
                       height: 24,
                     ),
+
+                    /// SECTION: TITLE INFO CONTENT
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: defaultMargin,
@@ -120,6 +123,8 @@ class DetailNotificationScreen extends StatelessWidget {
                           SizedBox(
                             height: 16,
                           ),
+
+                          /// SECTION: TEXT DESCRIPTION CONTENT
                           Text(
                             personalNotification.content,
                             style: regularBaseFont.copyWith(

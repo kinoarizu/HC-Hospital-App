@@ -21,6 +21,7 @@ class LatestNewsScreen extends StatelessWidget {
                 ),
                 ListView(
                   children: [
+                    /// SECTION: TITLE BACK BUTTON
                     SizedBox(
                       height: 24,
                     ),
@@ -56,6 +57,8 @@ class LatestNewsScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+
+                    /// SECTION: TITLE IMAGE CONTENT
                     SizedBox(
                       height: 24,
                     ),
@@ -88,6 +91,8 @@ class LatestNewsScreen extends StatelessWidget {
                         color: greyColor,
                       ),
                     ),
+
+                    /// SECTION: DESCTION TEXT CONTENT
                     Padding(
                       padding: EdgeInsets.symmetric(
                         vertical: 16,

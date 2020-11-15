@@ -1,7 +1,6 @@
 part of 'shared.dart';
 
 ///* Page Route
-
 /// Berisi map value yang digunakan untuk mendeklarasikan route yang 
 /// ada berdasarkan [routeName] yang telah dibuat pada setiap screen.
 

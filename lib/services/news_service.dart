@@ -1,8 +1,12 @@
 part of 'services.dart';
 
+///* Class Service News
+/// Class untuk menghandle resource berita kesehatan
+
 class NewsService {
   static CollectionReference _newsCollection = FirebaseFirestore.instance.collection('news');
 
+  /// Melakukan fetch semua data berita kesehatan
   static Future<List<News>> getResource() async {
     QuerySnapshot snapshot = await _newsCollection.get();
 

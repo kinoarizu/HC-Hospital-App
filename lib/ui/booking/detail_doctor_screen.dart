@@ -22,6 +22,7 @@ class DetailDoctorScreen extends StatelessWidget {
                 SingleChildScrollView(
                   child: Stack(
                     children: [
+                      /// SECTION: BACK PHOTO CONTENT
                       Stack(
                         children: [
                           CachedNetworkImage(
@@ -60,6 +61,8 @@ class DetailDoctorScreen extends StatelessWidget {
                           ),
                         ),
                       ),
+
+                      /// SECTION: DOCTOR INFO CONTENT
                       Container(
                         width: deviceWidth(context),
                         padding: EdgeInsets.all(20),
@@ -282,6 +285,8 @@ class DetailDoctorScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+
+                /// SECTION: BUTTON NEXT NAVIGATION
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
@@ -323,6 +328,7 @@ class DetailDoctorScreen extends StatelessWidget {
     );
   }
 
+  /// Method ketika tombol "buat janji" ditekan
   Future<void> onSubmitPressed(BuildContext context, Doctor doctor) async {
     final Box<Patient> patientBox = Hive.box('patients');
 

@@ -1,7 +1,6 @@
 part of 'shared.dart';
 
 ///* Color Theme
-
 /// Berisi semua variabel konstan berisi value setiap warna
 /// agar penggunaan warna menjadi reuseable dan global access.
 

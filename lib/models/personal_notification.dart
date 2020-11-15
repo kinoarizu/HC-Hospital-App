@@ -1,5 +1,8 @@
 part of 'models.dart';
 
+///* Class Model PersonalNotification
+/// Model untuk mengelola data collection notifikasi pengguna aplikasi ini
+
 class PersonalNotification extends Equatable {
   final String title;
   final String subtitle;

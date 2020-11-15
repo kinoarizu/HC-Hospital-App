@@ -30,6 +30,7 @@ class _FeedbackWebviewScreenState extends State<FeedbackWebviewScreen> {
                 ),
                 Column(
                   children: [
+                    /// SECTION: TITLE BACK BUTTON
                     SizedBox(
                       height: 24,
                     ),
@@ -68,6 +69,8 @@ class _FeedbackWebviewScreenState extends State<FeedbackWebviewScreen> {
                     SizedBox(
                       height: 24,
                     ),
+
+                    /// SECTION: WEBVIEW FORM CONTENT
                     Expanded(
                       child: Container(
                         width: deviceWidth(context),

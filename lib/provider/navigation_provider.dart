@@ -1,9 +1,7 @@
 part of 'provider.dart';
 
-///* Validation Provider
-
-/// Class yang digunakan untuk mengatur state navigasi bottom navbar 
-/// menggunakan state management provider melalui class [ChangeNotifier].
+////* Class Provider Navigation
+/// Class untuk menghandle state data navigasi halaman 
 
 class NavigationProvider extends ChangeNotifier {
   int _index = 0;
@@ -12,6 +10,7 @@ class NavigationProvider extends ChangeNotifier {
   int get index => _index;
   PageController get pageIndex => _pageIndex;
 
+  /// Mengganti index navigasi halaman utama
   void changeIndex(int index, {int initialPage = 0}) {
     _index = index;
     _pageIndex.jumpToPage(index);

@@ -1,5 +1,8 @@
 part of 'models.dart';
 
+///* Class Model DoctorSchedule
+/// Model untuk mengelola data collection jadwal setiap dokter
+
 class DoctorSchedule extends Equatable {
   final String dayName;
   final String time;
@@ -18,6 +21,7 @@ class DoctorSchedule extends Equatable {
     place,
   ];
 
+  /// Mengubah data jadwal dokter dari json menjadi object class
   factory DoctorSchedule.fromJson(Map<String, dynamic> json) => DoctorSchedule(
     dayName: json['day_name'],
     time: json['time'],

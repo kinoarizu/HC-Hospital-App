@@ -32,6 +32,7 @@ dependencies:
   equatable: ^1.2.5
   firebase_core: ^0.5.1
   flushbar: ^1.10.4
+  flutter_native_splash: ^0.1.9
   flutter_spinkit: ^4.1.2+1
   google_maps_flutter: ^1.0.5
   hive: ^1.4.4+1

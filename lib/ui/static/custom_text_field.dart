@@ -29,7 +29,6 @@ class CustomTextField extends StatelessWidget {
     this.fontSize = 14,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Column(

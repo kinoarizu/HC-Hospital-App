@@ -23,6 +23,7 @@ class SuccessBookingScreen extends StatelessWidget {
                   child: Center(
                     child: Column(
                       children: [
+                        /// SECTION: IMAGE ILLUSTRATION STATE
                         SizedBox(
                           height: 105 - statusBarHeight(context),
                         ),
@@ -83,6 +84,8 @@ class SuccessBookingScreen extends StatelessWidget {
                         SizedBox(
                           height: 122,
                         ),
+
+                        /// SECTION: BUTTON NEXT NAVIGATION
                         AccentRaisedButton(
                           width: defaultWidth(context),
                           height: 44,
@@ -122,6 +125,7 @@ class SuccessBookingScreen extends StatelessWidget {
     );
   }
 
+  /// Method ketika tombol "Lihat History" ditekan
   void onGoToHistoryPressed(BuildContext context) {
     Provider.of<BookingProvider>(context, listen: false).loadResource();
     Provider.of<NavigationProvider>(context, listen: false).changeIndex(3, initialPage: 3);
@@ -133,6 +137,7 @@ class SuccessBookingScreen extends StatelessWidget {
     );
   }
 
+  /// Method ketika tombol "kembali ke home" ditekan
   void onGoToHomePressed(BuildContext context) {
     Provider.of<BookingProvider>(context, listen: false).loadResource();
     Provider.of<NavigationProvider>(context, listen: false).changeIndex(0);

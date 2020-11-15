@@ -1,8 +1,12 @@
 part of 'services.dart';
 
+///* Class Service HospitalContact
+/// Class untuk menghandle resource kontak rumah sakit
+
 class HospitalContactService {
   static CollectionReference _hospitalContactCollection = FirebaseFirestore.instance.collection('hospital_contact');
 
+  /// Melakukan fetch semua data kontak rumah sakit
   static Future<List<HospitalContact>> getResource() async {
     QuerySnapshot snapshot = await _hospitalContactCollection.get();
 

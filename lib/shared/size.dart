@@ -1,7 +1,6 @@
 part of 'shared.dart';
 
 ///* Media Size
-
 /// Berisi function yang dibutuhkan untuk mendapatkan ukuran dimensi
 /// device yang digunakan user agar penggunaannya bisa menjadi reuseable.
 

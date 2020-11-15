@@ -47,6 +47,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
                         builder: (context, validation, _) => Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            /// SECTION: TITLE BACK BUTTON
                             Stack(
                               children: [
                                 Align(
@@ -80,6 +81,8 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
                             SizedBox(
                               height: 24,
                             ),
+
+                            /// SECTION: INPUT FIELD FORM
                             CustomTextField(
                               controller: nameController,
                               labelText: "Nama Pasien",
@@ -149,6 +152,8 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
                             SizedBox(
                               height: 220,
                             ),
+
+                            /// SECTION: BUTTON REGISTER DATA
                             if (!isSubmit) AccentRaisedButton(
                               color: accentColor,
                               width: defaultWidth(context),
@@ -188,7 +193,8 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
       ),
     );
   }
-
+  
+  /// Method ketika tombol "daftar" ditekan
   void onSubmitPressed(BuildContext context, ValidationProvider validation, {Patient patient}) {
     Patient.register(patient);
     PatientService.storeResource(patient);

@@ -1,7 +1,6 @@
 part of 'shared.dart';
 
 ///* Font Style
-
 /// Berisi semua variabel berisi font style yang telah diatur [fontFamily] serta
 /// [color], dan dibuat berdasarkan [fontWeight] masing-masing agar penggunaan 
 /// font style bisa dioverride, reuseable dan menjadi global access.

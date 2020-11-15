@@ -1,6 +1,10 @@
 part of 'utils.dart';
 
+///* DateTime Utility Class - DateTime Custom Configuration
+/// Class ini dibuat agar dapat membungkus method utilitas waktu dan tanggal
+
 class DateTimeUtil {
+  /// Mengenerate hari kerja dokter (senin - jum'at) dalam angka urutan hari
   static int generateValidDayName(String dayName) {
     switch (dayName) {
       case 'Senin':
@@ -16,6 +20,7 @@ class DateTimeUtil {
     }
   }
 
+  /// Mengenerate waktu perbedaan (yang lalu) berdasarkan waktu epoch (unix time)
   static String generateDiffHuman(int epoch) {
     DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(epoch);
 

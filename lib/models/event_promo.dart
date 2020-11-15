@@ -1,5 +1,8 @@
 part of 'models.dart';
 
+///* Class Model EventPromo
+/// Model untuk mengelola data collection event dan promo yang diadakan rumah sakit
+
 class EventPromo extends Equatable {
   final String title;
   final String imageURL;

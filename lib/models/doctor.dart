@@ -1,5 +1,8 @@
 part of 'models.dart';
 
+///* Class Model Doctor
+/// Model untuk mengelola data collection tentang dokter rumah sakit
+
 class Doctor extends Equatable {
   final String name;
   final String gender;
@@ -39,12 +42,14 @@ class Doctor extends Equatable {
     doctorSchedule,
   ];
 
+  /// Mengubah data dokter dari object class menjadi json
   Map<String, dynamic> toJson() => {
     'name': name,
     'speciality': speciality,
     'photo': photo,
   };
 
+  /// Mengubah data dokter dari json menjadi object class
   factory Doctor.fromJson(Map<String, dynamic> json) => Doctor(
     name: json['name'],
     gender: json['gender'],
@@ -57,6 +62,7 @@ class Doctor extends Equatable {
     credential: json['credential'],
   );
 
+  /// Mengenerate waktu tersedia dokter berdasarkan waktu hari ini
   static String generateTimeAvailable(List<DoctorSchedule> doctorSchedule) {
     String timeWork = doctorSchedule.singleWhere((element) {
       return DateTimeUtil.generateValidDayName(element.dayName) == DateTime.now().weekday;

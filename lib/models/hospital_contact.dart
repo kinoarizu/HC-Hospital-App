@@ -1,5 +1,8 @@
 part of 'models.dart';
 
+///* Class Model HospitalContact
+/// Model untuk mengelola data collection kontak untuk menghububgi rumah sakit
+
 class HospitalContact extends Equatable {
   final String title;
   final String iconPath;

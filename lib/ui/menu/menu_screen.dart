@@ -13,6 +13,7 @@ class MenuScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              /// SECTION: ICON TITLE HEADER
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -37,6 +38,8 @@ class MenuScreen extends StatelessWidget {
               SizedBox(
                 height: 24,
               ),
+
+              /// SECTION: MENU CARD LIST
               Column(
                 children: [
                   MoreMenuCard(

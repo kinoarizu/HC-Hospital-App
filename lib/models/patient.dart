@@ -3,6 +3,9 @@ import 'package:hive/hive.dart';
 
 part 'patient.g.dart';
 
+///* Class Model Patient
+/// Model untuk mengelola data collection pasien rumah sakit
+
 @HiveType(typeId: 1)
 class Patient extends Equatable {
   @HiveField(0)
@@ -35,12 +38,14 @@ class Patient extends Equatable {
   @override
   List<Object> get props => [id, name, gender, email, phoneNumber, status];
 
+  /// Mengubah data pasien dari object class menjadi json
   Map<String, dynamic> toJson() => {
     'name': name,
     'gender': gender,
     'status': status,
   };
 
+  /// Mengubah data pasien dari json menjadi object class
   factory Patient.fromJson(Map<String, dynamic> json) => Patient(
     id: json['id'],
     name: json['name'],
@@ -50,6 +55,7 @@ class Patient extends Equatable {
     status: json['status'],
   );
 
+  /// Menambahkan data pasien ke local database
   static void register(Patient patient) {
     Box<Patient> patientBox = Hive.box('patients');
     patientBox.add(patient);
