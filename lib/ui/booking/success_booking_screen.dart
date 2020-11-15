@@ -92,13 +92,7 @@ class SuccessBookingScreen extends StatelessWidget {
                           fontSize: 14,
                           text: "Lihat History",
                           onPressed: () {
-                            Provider.of<BookingProvider>(context, listen: false).loadResource();
-                            Provider.of<NavigationProvider>(context, listen: false).changeIndex(3, initialPage: 3);
-                            Navigator.pushNamedAndRemoveUntil(
-                              context,
-                              MainScreen.routeName,
-                              (Route<dynamic> route) => false,
-                            );
+                            onGoToHistoryPressed(context);
                           },
                         ),
                         SizedBox(
@@ -113,13 +107,7 @@ class SuccessBookingScreen extends StatelessWidget {
                             ),
                           ),
                           onTap: () {
-                            Provider.of<BookingProvider>(context, listen: false).loadResource();
-                            Provider.of<NavigationProvider>(context, listen: false).changeIndex(0);
-                            Navigator.pushNamedAndRemoveUntil(
-                              context,
-                              MainScreen.routeName,
-                              (Route<dynamic> route) => false,
-                            );
+                            onGoToHomePressed(context);
                           },
                         ),
                       ],
@@ -131,6 +119,28 @@ class SuccessBookingScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void onGoToHistoryPressed(BuildContext context) {
+    Provider.of<BookingProvider>(context, listen: false).loadResource();
+    Provider.of<NavigationProvider>(context, listen: false).changeIndex(3, initialPage: 3);
+
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      MainScreen.routeName,
+      (Route<dynamic> route) => false,
+    );
+  }
+
+  void onGoToHomePressed(BuildContext context) {
+    Provider.of<BookingProvider>(context, listen: false).loadResource();
+    Provider.of<NavigationProvider>(context, listen: false).changeIndex(0);
+    
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      MainScreen.routeName,
+      (Route<dynamic> route) => false,
     );
   }
 }

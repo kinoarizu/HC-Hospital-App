@@ -438,6 +438,11 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
       );
 
       await BookingService.storeResource(booking);
+
+      await NotificationUtil.pushNotification(
+        heading: "Sukses Melakukan Booking",
+        content: "Silahkan datang pada jadwal yang telah anda tentukan.",
+      );
       
       Navigator.pushReplacementNamed(context, SuccessBookingScreen.routeName,
         arguments: booking.id,

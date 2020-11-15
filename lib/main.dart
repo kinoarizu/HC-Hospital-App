@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:heaven_canceller_hospital/models/patient.dart';
 import 'package:hive/hive.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:heaven_canceller_hospital/shared/shared.dart';
 import 'package:heaven_canceller_hospital/ui/ui.dart';
@@ -14,9 +15,11 @@ void main() async {
 
   Hive.init(appDocumentDirectory.path);
   Hive.registerAdapter<Patient>(PatientAdapter());
-
   await Hive.openBox<Patient>("patients");
   await Firebase.initializeApp();
+
+  OneSignal.shared.init(oneSignalAppID, iOSSettings: null);
+  OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
 
   runApp(MyApp());
 }
