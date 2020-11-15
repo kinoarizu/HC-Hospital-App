@@ -52,22 +52,6 @@ class BookingScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: AccentRaisedButton(
-                      height: 46,
-                      icon: Icons.filter_list,
-                      color: accentColor,
-                      borderRadius: 6,
-                      fontSize: 14,
-                      onPressed: () {
-                        filterModalBottomSheet(context);
-                      },
-                    ),
-                  ),
                 ],
               ),
               SizedBox(

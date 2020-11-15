@@ -100,48 +100,58 @@ class PartnerCareerScreen extends StatelessWidget {
                             future: PartnerService.getResource(),
                             builder: (_, snapshot) {
                               List<Partner> partners = snapshot.data;
-                              return Container(
-                                height: 120,
-                                child: ListView.builder(
-                                  itemCount: partners.length,
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (_, index) => Padding(
-                                    padding: EdgeInsets.only(
-                                      left: (index == 0) ? 20 : 16,
-                                      right: (index == 2) ? 20 : 0,
-                                    ),
-                                    child: GestureDetector(
-                                      child: Container(
-                                        width: 120,
-                                        height: 120,
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 10,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(8),
-                                          border: Border.all(
-                                            width: 1,
-                                            color: lightGreyColor,
+
+                              if (snapshot.hasData) {
+                                return Container(
+                                  height: 120,
+                                  child: ListView.builder(
+                                    itemCount: partners.length,
+                                    scrollDirection: Axis.horizontal,
+                                    itemBuilder: (_, index) => Padding(
+                                      padding: EdgeInsets.only(
+                                        left: (index == 0) ? 20 : 16,
+                                        right: (index == 2) ? 20 : 0,
+                                      ),
+                                      child: GestureDetector(
+                                        child: Container(
+                                          width: 120,
+                                          height: 120,
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 10,
                                           ),
-                                        ),
-                                        child: Center(
-                                          child: CachedNetworkImage(
-                                            imageUrl: partners[index].imageURL,
-                                            placeholder: (_, url) => SpinKitRing(
-                                              color: accentColor,
-                                              size: 50,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(8),
+                                            border: Border.all(
+                                              width: 1,
+                                              color: lightGreyColor,
+                                            ),
+                                          ),
+                                          child: Center(
+                                            child: CachedNetworkImage(
+                                              imageUrl: partners[index].imageURL,
+                                              placeholder: (_, url) => SpinKitRing(
+                                                color: accentColor,
+                                                size: 50,
+                                              ),
                                             ),
                                           ),
                                         ),
+                                        onTap: () {
+                                          Navigator.pushNamed(context, DetailPartnerVacancyScreen.routeName,
+                                            arguments: partners[index],
+                                          );
+                                        },
                                       ),
-                                      onTap: () {
-                                        Navigator.pushNamed(context, DetailPartnerVacancyScreen.routeName,
-                                          arguments: partners[index],
-                                        );
-                                      },
                                     ),
                                   ),
-                                ),
+                                );
+                              }
+                              
+                              /// SECTION: LOADING VIEW STATE
+                              return CircularLoadingState(
+                                height: 120,
+                                color: accentColor,
+                                state: "Memuat Data Partner",
                               );
                             }
                           ),

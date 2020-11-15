@@ -225,9 +225,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     await PatientService.storeResource(patient);
 
-    Navigator.pushReplacementNamed(context, BookingConfirmationScreen.routeName,
-      arguments: doctor,
-    );
+    if (doctor != null) {
+      Navigator.pushReplacementNamed(context, BookingConfirmationScreen.routeName,
+        arguments: doctor,
+      );
+    } else {
+      Provider.of<NavigationProvider>(context, listen: false).changeIndex(3, initialPage: 3);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        MainScreen.routeName,
+        (Route<dynamic> route) => false,
+      );
+    }
     
     validation.resetChange();
   }

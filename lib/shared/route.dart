@@ -20,4 +20,5 @@ Map<String, WidgetBuilder> appRoute = {
   FeedbackWebviewScreen.routeName: (BuildContext context) => FeedbackWebviewScreen(),
   PartnerCareerScreen.routeName: (BuildContext context) => PartnerCareerScreen(),
   DetailPartnerVacancyScreen.routeName: (BuildContext context) => DetailPartnerVacancyScreen(),
+  DetailNotificationScreen.routeName: (BuildContext context) => DetailNotificationScreen(),
 };

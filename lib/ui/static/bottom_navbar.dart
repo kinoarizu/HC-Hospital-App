@@ -95,6 +95,10 @@ class BottomNavbar extends StatelessWidget {
 /// memasukan [label], [icon], dan [activeIcon] setiap pemanggilan.
 
 BottomNavigationBarItem _buildBottomNavBarItem(BuildContext context, {String label, String icon, String activeIcon}) {
+  final Box<Patient> patientBox = Hive.box('patients');
+  final int notifCount = Provider.of<PersonalNotificationProvider>(context).personalNotification.length;
+  final int bookingCount = Provider.of<BookingProvider>(context).bookings.length;
+
   return BottomNavigationBarItem(
     label: label,
     icon: (label == "Profile") ? Consumer<NavigationProvider>(
@@ -108,7 +112,7 @@ BottomNavigationBarItem _buildBottomNavBarItem(BuildContext context, {String lab
                 icon,
               ),
             ),
-            Positioned(
+            if (patientBox.isNotEmpty) Positioned(
               top: 0,
               right: 0,
               child: Container(
@@ -120,7 +124,7 @@ BottomNavigationBarItem _buildBottomNavBarItem(BuildContext context, {String lab
                 ),
                 child: Center(
                   child: Text(
-                    "2",
+                    "${notifCount + bookingCount}",
                     style: semiBoldBaseFont.copyWith(
                       fontSize: 7.8,
                       color: baseColor,
@@ -150,7 +154,7 @@ BottomNavigationBarItem _buildBottomNavBarItem(BuildContext context, {String lab
                 activeIcon,
               ),
             ),
-            Positioned(
+            if (patientBox.isNotEmpty) Positioned(
               top: 0,
               right: 0,
               child: Container(
@@ -162,7 +166,7 @@ BottomNavigationBarItem _buildBottomNavBarItem(BuildContext context, {String lab
                 ),
                 child: Center(
                   child: Text(
-                    "2",
+                    "${notifCount + bookingCount}",
                     style: semiBoldBaseFont.copyWith(
                       fontSize: 7.8,
                       color: baseColor,

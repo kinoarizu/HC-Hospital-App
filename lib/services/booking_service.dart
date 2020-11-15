@@ -19,26 +19,30 @@ class BookingService {
     QuerySnapshot snapshot = await _bookingCollection.get();
 
     final Box<Patient> patientBox = Hive.box('patients');
-    final Patient patient = patientBox.getAt(0);
 
-    var documents = snapshot.docs.where((document) => document.data()['user_id'] == patient.id);
+    if (patientBox.isNotEmpty) {
+      final Patient patient = patientBox.getAt(0);
+      var documents = snapshot.docs.where((document) => document.data()['user_id'] == patient.id);
 
-    List<Booking> bookings = [];
+      List<Booking> bookings = [];
 
-    for (var document in documents) {
-      bookings.add(
-        Booking(
-          id: document.data()['id'],
-          userID: document.data()['user_id'],
-          schedule: document.data()['schedule'],
-          message: document.data()['message'],
-          time: document.data()['time'],
-          doctor: Doctor.fromJson(document.data()['doctor']),
-          patient: Patient.fromJson(document.data()['patient']),
-        ),
-      );
+      for (var document in documents) {
+        bookings.add(
+          Booking(
+            id: document.data()['id'],
+            userID: document.data()['user_id'],
+            schedule: document.data()['schedule'],
+            message: document.data()['message'],
+            time: document.data()['time'],
+            doctor: Doctor.fromJson(document.data()['doctor']),
+            patient: Patient.fromJson(document.data()['patient']),
+          ),
+        );
+      }
+
+      return bookings;
     }
 
-    return bookings;
+    return [];
   }
 }

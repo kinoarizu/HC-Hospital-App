@@ -10,6 +10,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Box<Patient> patientBox = Hive.box('patients');
+
     return Scaffold(
       body: Stack(
         children: [
@@ -73,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 topRight: Radius.circular(16),
                               ),
                             ),
-                            child: Column(
+                            child: (patientBox.isNotEmpty) ? Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
@@ -82,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 Column(
                                   children: [
                                     Text(
-                                      "Angelina Mahouka",
+                                      patientBox.getAt(0).name,
                                       style: semiBoldBaseFont.copyWith(
                                         fontSize: 14,
                                         color: darkGreyColor,
@@ -92,7 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       height: 4,
                                     ),
                                     Text(
-                                      "Wanita",
+                                      patientBox.getAt(0).gender,
                                       style: regularBaseFont.copyWith(
                                         fontSize: 12,
                                         color: greyColor,
@@ -102,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       height: 4,
                                     ),
                                     Text(
-                                      "086718465342",
+                                      patientBox.getAt(0).phoneNumber,
                                       style: regularBaseFont.copyWith(
                                         fontSize: 12,
                                         color: lightGreyColor,
@@ -155,11 +157,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Center(
-                                                    child: Text(
-                                                      "2",
-                                                      style: semiBoldBaseFont.copyWith(
-                                                        fontSize: 10,
-                                                        color: baseColor,
+                                                    child: Consumer<PersonalNotificationProvider>(
+                                                      builder: (context, notification, _) => Text(
+                                                        notification.personalNotification.length.toString(),
+                                                        style: semiBoldBaseFont.copyWith(
+                                                          fontSize: 10,
+                                                          color: baseColor,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -207,11 +211,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Center(
-                                                    child: Text(
-                                                      "1",
-                                                      style: semiBoldBaseFont.copyWith(
-                                                        fontSize: 10,
-                                                        color: baseColor,
+                                                    child: Consumer<BookingProvider>(
+                                                      builder: (context, bookingProvider, _) => Text(
+                                                        bookingProvider.bookings.length.toString(),
+                                                        style: semiBoldBaseFont.copyWith(
+                                                          fontSize: 10,
+                                                          color: baseColor,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -238,26 +244,82 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       return NotificationPersonalCard(
                                         notif,
                                         isNew: true,
-                                        onTap: () {},
+                                        onTap: () {
+                                          Navigator.pushNamed(context, DetailNotificationScreen.routeName,
+                                            arguments: notif,
+                                          );
+                                        },
                                       );
                                     }).toList(),
                                   ),
                                 ),
                                 if (!isNotificationTab) Consumer<BookingProvider>(
-                                  builder: (context, bookingProvider, _) => Column(
-                                    children: bookingProvider.bookings.map((booking){
-                                      return HistoryPersonalCard(
-                                        booking,
-                                        isFinish: false,
-                                        onTap: () {},
+                                  builder: (context, bookingProvider, _) {
+                                    if (bookingProvider.bookings.length != 0) {
+                                      return Column(
+                                        children: bookingProvider.bookings.map((booking){
+                                          return HistoryPersonalCard(
+                                            booking,
+                                            isFinish: false,
+                                            onTap: () {},
+                                          );
+                                        }).toList(),
                                       );
-                                    }).toList(),
-                                  ),
+                                    }
+
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 10,
+                                      ),
+                                      child: EmptyViewState(),
+                                    );
+                                  },
                                 ),
                               ],
+                            ) : Container(
+                              height: 180,
+                              margin: EdgeInsets.only(
+                                top: 64,
+                              ),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    "assets/image/unauth.png",
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  SizedBox(
+                                    height: 16,
+                                  ),
+                                  Text(
+                                    "Kamu Belum Membuat Akun,\nSilahkan Registrasi",
+                                    textAlign: TextAlign.center,
+                                    style: mediumBaseFont.copyWith(
+                                      fontSize: 13,
+                                      color: darkGreyColor,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 24,
+                                  ),
+                                  AccentRaisedButton(
+                                    width: 180,
+                                    height: 44,
+                                    borderRadius: 8,
+                                    color: accentColor,
+                                    fontColor: baseColor,
+                                    fontSize: 13,
+                                    text: "Buat Akun",
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, RegisterScreen.routeName);
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                          Align(
+                          if (patientBox.isNotEmpty) Align(
                             alignment: Alignment.center,
                             child: Container(
                               width: 100,

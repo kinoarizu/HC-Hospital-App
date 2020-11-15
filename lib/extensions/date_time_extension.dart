@@ -1,7 +1,7 @@
 part of 'extensions.dart';
 
 extension DateTimeExtension on DateTime {
-  String get dateAndtime => "${this.shortDayName} ${this.day}, ${this.hour}:00";
+  String get dateAndtime => "${this.day} ${this.monthName} ${this.year}";
 
   String get shortDayName {
     switch (this.weekday) {

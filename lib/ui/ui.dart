@@ -43,6 +43,7 @@ part 'menu/menu_screen.dart';
 part 'menu/feedback_webview_screen.dart';
 part 'menu/detail_partner_vacancy_screen.dart';
 part 'profile/profile_screen.dart';
+part 'profile/detail_notification_screen.dart';
 
 part 'static/bottom_navbar.dart';
 part 'static/accent_raised_button.dart';
@@ -62,7 +63,6 @@ part 'home/components/map_address_card.dart';
 part 'home/components/map_view_card.dart';
 part 'booking/components/doctor_schedule_info.dart';
 part 'booking/components/doctor_view_card.dart';
-part 'booking/components/filter_modal_bottom_sheet.dart';
 part 'booking/components/selectable_date_button.dart';
 part 'booking/components/patient_radio_option.dart';
 part 'service/components/hospital_facility_card.dart';

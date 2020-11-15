@@ -95,7 +95,7 @@ class NotificationPersonalCard extends StatelessWidget {
           ],
         ),
       ),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 }
