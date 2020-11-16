@@ -1,7 +1,7 @@
 part of 'utils.dart';
 
 ///* Notification Utility Class - DateTime Custom Configuration
-/// Class ini dibuat agar dapat membungkus method utilitas waktu dan tanggal
+/// Class ini dibuat agar dapat membungkus method utilitas notifikasi pengguna
 
 class NotificationUtil {
   /// Memunculkan notifikasi dari server onesignal ke aplikasi ini berdasarkan id pengguna
