@@ -1,6 +1,6 @@
 # HC Hospital
 
-[![Fork](https://img.shields.io/github/forks/abuazis/HC-Hospital-App?style=social)](https://github.com/abuazis/HC-Hospital-App/fork)&nbsp; [![Star](https://img.shields.io/github/stars/abuazis/HC-Hospital-App?style=social)](https://github.com/abuazis/HC-Hospital-App/star)&nbsp; [![Watches](https://img.shields.io/github/watchers/abuazis/HC-Hospital-App?style=social)](https://github.com/abuazis/HC-Hospital-App/)&nbsp;
+[![Fork](https://img.shields.io/github/forks/kinoarizu/HC-Hospital-App?style=social)](https://github.com/kinoarizu/HC-Hospital-App/fork)&nbsp; [![Star](https://img.shields.io/github/stars/kinoarizu/HC-Hospital-App?style=social)](https://github.com/kinoarizu/HC-Hospital-App/star)&nbsp; [![Watches](https://img.shields.io/github/watchers/kinoarizu/HC-Hospital-App?style=social)](https://github.com/kinoarizu/HC-Hospital-App/)&nbsp;
 
 > Kami Siap Melayani Kesehatan Anda
 
@@ -29,7 +29,7 @@ HC Hospital adalah aplikasi yang digunakan oleh pengguna untuk melakukan booking
 
 ## How To Install
 
-- git clone https://github.com/abuazis/HC-Hospital-App.git
+- git clone https://github.com/kinoarizu/HC-Hospital-App.git
 - flutter packages get
 - flutter run
 
@@ -37,11 +37,3 @@ HC Hospital adalah aplikasi yang digunakan oleh pengguna untuk melakukan booking
 
 - 1.0.0+1
   - CHANGE: APK release
-
-## Credit
-
-Abu Azis – [@abuzaio](https://instagram.com/abuzaio) – abuaziscorp@gmail.com
-
-Distributed under the MIT license. See `LICENSE` for more information.
-
-[https://github.com/abuazis](https://github.com/abuazis/)

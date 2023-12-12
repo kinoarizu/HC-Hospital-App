@@ -1,4 +1,4 @@
-package com.abuzaio.heaven_canceller_hospital
+package com.kinoarizu.heaven_canceller_hospital
 
 import io.flutter.embedding.android.FlutterActivity
 
